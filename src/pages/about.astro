@@ -3,82 +3,219 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+
+const roles = [
+  { title: "Co-Director", org: "Creative Regenerative Futures Foundation", url: "https://crf-foundation.org/" },
+  { title: "Community & Partnerships Lead", org: "Bread Cooperative", url: "https://bread.coop/" },
+  { title: "Global Shaper", org: "World Economic Forum — Amsterdam Hub", url: "https://www.weforum.org/" },
+  { title: "Regenerative Consultant", org: "Creativo Design" },
+  { title: "Chair of Supervisory Board", org: "OCAN", note: "2020–2024" },
+  { title: "Societal Council Member", org: "DRIFT — Erasmus University", url: "https://drift.eur.nl/", note: "2024" },
+  { title: "Core Team Member", org: "Impact Economy Foundation — 2100 Movement" },
+  { title: "Board of Trustees", org: "Krijger & Partners", note: "2022–2024" },
+];
+
+const fellowships = [
+  { title: "Davos50 Delegate (2025, 2026)", org: "World Economic Forum" },
+  { title: "John Lewis Senior Fellow", org: "Humanity in Action" },
+  { title: "TILN Fellow", org: "German Marshall Fund" },
+  { title: "Climate Reality Leader", org: "Al Gore's Climate Reality Project" },
+  { title: "EU Youth Sounding Board Member", org: "European Commission DG INTPA", note: "1 of 25 / 4,000+ applicants across 150 countries" },
+  { title: "ENAR Climate Justice Academy", org: "European Network Against Racism", note: "2024" },
+];
+
+const education = [
+  { degree: "M.Sc. Public Administration: International & European Governance", school: "Leiden University", note: "In progress" },
+  { degree: "M.Sc. Crisis and Security Management", school: "Leiden University", note: "In progress" },
+  { degree: "B.Sc. Public Administration: Governance, Policy & Organisations", school: "Leiden University" },
+];
 ---
-<Base title="About — Gilberto Morishaw" description="The story behind the work: from Curaçao to The Hague to the world's most consequential rooms.">
+
+<Base
+  title="About — Gilberto Morishaw"
+  description="From Curaçao to the rooms where the future gets decided. Systems thinker, convenor, speaker, and Co-Director of the Creative Regenerative Futures Foundation."
+>
   <Nav slot="nav" />
+
   <section class="about-hero">
     <div class="container">
       <p class="section-label">About</p>
       <h1>Where I come from<br/><em>shapes where I go</em></h1>
+      <p class="about-hero__sub">
+        Techno-futurist, systems thinker, speaker, musician, and poet.
+        Born in Curaçao. Based in The Hague. Operating globally.
+      </p>
     </div>
   </section>
+
   <section class="about-story">
     <div class="container about-story__inner">
       <div class="about-story__text">
         <div class="divider"></div>
-        <h2>The origin</h2>
-        <p>I grew up in Curaçao. On an island, you understand very quickly how small you are — and how vulnerable. You learn that if one thing goes wrong, everyone notices. That's not a metaphor. It's just life when you're surrounded by water and the system is fragile.</p>
-        <p>That's where my understanding of interconnectedness started. Not in a classroom, but from growing up in a place where community isn't a concept — it's the infrastructure.</p>
-        <h2>The journey</h2>
-        <p>I came to the Netherlands for university. Leiden, The Hague campus — the city of international justice and peace. I studied Public Administration, then stayed for a Master's in International & European Governance alongside Crisis and Security Management.</p>
-        <p>Between degrees I did something that turned out to matter a lot: I read. Over a hundred books — philosophy, economics, human rights, social justice, science. Not for any course. Just because I needed to understand the world I was trying to change.</p>
-        <h2>The thread</h2>
-        <p>The thing that connects my work — across climate, regenerative finance, Web3, policy, facilitation, and the arts — is a single question I keep returning to: <em>how do we build systems that actually work for people at the margins?</em></p>
-        <p>Not people at the margins as an afterthought. As the design brief.</p>
-        <p>That question has taken me to Davos, to EU Parliament, to the International Court of Justice's climate hearings, to building real blockchain infrastructure for underserved communities, to running grants programmes in Curaçao using local stablecoins. Different rooms, same question.</p>
-        <h2>The person</h2>
-        <p>I'm a musician and a poet as much as I'm a consultant and speaker. I live in The Hague. I speak English, Dutch, Papiamentu, Spanish, and French. I'm completing two Master's degrees simultaneously at Leiden University. I believe genuinely good conversations can change things — and I've spent years designing the conditions for them to happen.</p>
+
+        <div class="story-block">
+          <h2>The origin</h2>
+          <p>I grew up in Curaçao. On an island, you understand very quickly how small you are — and how vulnerable. You learn that if one thing goes wrong, everyone notices. That's not a metaphor. It's just life when you're surrounded by water and the system is fragile.</p>
+          <p>That early understanding of interconnectedness — of how everything in a small place depends on everything else — has never left me. It's the lens I bring into every room I walk into, whether that's the World Economic Forum in Davos, the EU Parliament in Brussels, or a community hall in The Hague.</p>
+        </div>
+
+        <div class="story-block">
+          <h2>The work</h2>
+          <p>I help leaders and organizations navigate the complex intersection of climate, technology, and society — and inspire them to envision and build a regenerative future. My work spans systems thinking, regenerative finance, policy advisory, facilitation, and programme design.</p>
+          <p>I have addressed global audiences at the World Economic Forum, EU Parliament, COP27, COP28, COP30, and the World Bank. My writing has been published in Newsweek, the WEF Agenda, Humanity in Action, and various governmental and international reports.</p>
+          <p>I am an expert in curating programmes, moderating difficult conversations, and co-creating processes that move from insight to action. I have co-created programmes for Pakhuis de Zwijger, Springtij, True Price, Systemic Justice, and others.</p>
+        </div>
+
+        <div class="story-block">
+          <h2>The thread</h2>
+          <p>The thing that connects my work — across climate, regenerative finance, Web3, policy, facilitation, and the arts — is a single question I keep returning to: <em>how do we build systems that actually work for people at the margins?</em></p>
+          <p>Not people at the margins as an afterthought. As the design brief. Countries like mine are at the forefront of the metacrisis. When you grow up at the forefront, you stop waiting for solutions designed somewhere else. You start building them yourself.</p>
+        </div>
+
+        <div class="story-block">
+          <h2>The person</h2>
+          <p>I am a musician and a poet as much as I am a consultant and speaker. I use interactive elements and the arts to challenge, confront, and co-create with my audiences — not just deliver information at them.</p>
+          <p>I currently hold two simultaneous Master's degrees at Leiden University (International & European Governance, and Crisis & Security Management), having completed my BSc within three years. Between degrees I spent a year reading over 100 books — philosophy, economics, science, human rights, social justice — not for any course, but because I needed to understand the world I was trying to change.</p>
+          <p>I speak English, Dutch, Papiamentu (native), Spanish, and French. I live in The Hague.</p>
+        </div>
+
+        <div class="story-block about-quote">
+          <blockquote>
+            "Growing up on an island you realize how small you are, and how vulnerable we are. And how important it is to recognize the interconnectedness of all things. Because if one thing goes wrong we notice."
+          </blockquote>
+        </div>
       </div>
+
       <aside class="about-story__aside">
-        <div class="about-photo-placeholder">Photo</div>
+        <div class="about-photo-placeholder" aria-hidden="true">
+          <span>Photo coming</span>
+        </div>
+
         <div class="about-credentials">
-          <h4>Fellowships</h4>
-          <ul>
-            <li>John Lewis Senior Fellow — Humanity in Action</li>
-            <li>TILN Fellow — German Marshall Fund</li>
-            <li>Davos50 — World Economic Forum</li>
-            <li>Climate Reality Leader (Al Gore)</li>
-            <li>EU Youth Sounding Board — DG INTPA (1 of 25 / 4,000+ applicants)</li>
-          </ul>
           <h4>Current roles</h4>
           <ul>
-            <li>Co-Director — CRFF</li>
-            <li>Community & Partnerships Lead — Bread Cooperative</li>
-            <li>Global Shaper — WEF Amsterdam</li>
-            <li>Regenerative Consultant — Creativo Design</li>
+            {roles.map(r => (
+              <li>
+                <strong>{r.title}</strong>
+                {r.url
+                  ? <a href={r.url} target="_blank" rel="noopener">{r.org}</a>
+                  : <span>{r.org}</span>
+                }
+                {r.note && <em>{r.note}</em>}
+              </li>
+            ))}
           </ul>
+
+          <h4>Fellowships & recognition</h4>
+          <ul>
+            {fellowships.map(f => (
+              <li>
+                <strong>{f.title}</strong>
+                <span>{f.org}</span>
+                {f.note && <em>{f.note}</em>}
+              </li>
+            ))}
+          </ul>
+
+          <h4>Education</h4>
+          <ul>
+            {education.map(e => (
+              <li>
+                <strong>{e.degree}</strong>
+                <span>{e.school}</span>
+                {e.note && <em>{e.note}</em>}
+              </li>
+            ))}
+          </ul>
+
           <h4>Languages</h4>
-          <p>Papiamentu (native) · English · Dutch · Spanish · French</p>
+          <p class="languages">Papiamentu (native) · English · Dutch · Spanish · French</p>
         </div>
       </aside>
     </div>
   </section>
+
   <section class="about-ctas">
-    <div class="container about-ctas__inner">
+    <div class="container about-ctas__inner reveal">
       <a href="/speaking" class="btn btn-primary">Invite me to speak</a>
       <a href="/writings" class="btn btn-outline">Read my writing</a>
       <a href="/contact" class="btn btn-outline">Get in touch</a>
     </div>
   </section>
+
   <Footer slot="footer" />
 </Base>
+
 <style>
 .about-hero { padding: var(--space-xl) 0; background: var(--ink); color: var(--off-white); }
 .about-hero .section-label { color: var(--bronze-light); }
-.about-hero h1 { color: var(--off-white); margin-top: var(--space-sm); }
+.about-hero h1 { color: var(--off-white); margin: var(--space-sm) 0; }
 .about-hero h1 em { color: var(--bronze-light); font-style: italic; }
+.about-hero__sub { color: rgba(250,247,242,0.75); max-width: 540px; }
+
 .about-story { padding: var(--space-xl) 0; }
-.about-story__inner { display: grid; grid-template-columns: 1fr 380px; gap: var(--space-xl); align-items: start; }
-.about-story__text h2 { margin: var(--space-md) 0 var(--space-sm); font-size: 1.4rem; }
-.about-story__text p { color: var(--grey); margin-bottom: var(--space-sm); }
-.about-story__text em { color: var(--ink); font-style: italic; }
-.about-photo-placeholder { aspect-ratio: 3/4; background: var(--grey-light); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--grey); margin-bottom: var(--space-md); }
-.about-credentials h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--bronze); margin: var(--space-sm) 0 0.5rem; }
-.about-credentials ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-.about-credentials li { font-size: 0.88rem; color: var(--grey); padding-left: 1rem; position: relative; }
-.about-credentials li::before { content: "·"; position: absolute; left: 0; color: var(--bronze); }
-.about-credentials p { font-size: 0.88rem; color: var(--grey); max-width: 100%; }
+.about-story__inner { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-xl); align-items: start; }
+
+.story-block { margin-bottom: var(--space-lg); }
+.story-block h2 { font-size: 1.3rem; margin-bottom: var(--space-sm); color: var(--ink); }
+.story-block p { color: var(--grey); margin-bottom: 0.75rem; }
+.story-block em { color: var(--ink); font-style: italic; }
+
+.about-quote blockquote {
+  border-left: 3px solid var(--bronze);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bronze-pale);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.6;
+  max-width: 100%;
+}
+
+.about-photo-placeholder {
+  aspect-ratio: 3/4;
+  background: var(--grey-light);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--grey);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-md);
+}
+
+.about-credentials { display: flex; flex-direction: column; gap: var(--space-sm); }
+.about-credentials h4 {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--bronze);
+  font-family: var(--font-body);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  margin-top: 0.25rem;
+}
+.about-credentials ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.about-credentials li {
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--grey-light);
+}
+.about-credentials li strong { color: var(--ink); font-weight: 600; }
+.about-credentials li span { color: var(--grey); }
+.about-credentials li a { color: var(--bronze); font-size: 0.82rem; }
+.about-credentials li em { color: var(--grey); font-size: 0.76rem; font-style: normal; }
+.about-credentials .languages { font-size: 0.85rem; color: var(--grey); }
+
 .about-ctas { background: var(--bronze-pale); padding: var(--space-lg) 0; }
 .about-ctas__inner { display: flex; gap: var(--space-sm); flex-wrap: wrap; }
-@media (max-width: 768px) { .about-story__inner { grid-template-columns: 1fr; } .about-photo-placeholder { display: none; } }
+
+@media (max-width: 900px) {
+  .about-story__inner { grid-template-columns: 1fr; }
+  .about-photo-placeholder { display: none; }
+}
 </style>
