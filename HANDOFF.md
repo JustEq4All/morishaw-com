@@ -71,9 +71,22 @@ NETLIFY_AUTH_TOKEN="nfp_aQ…0218" netlify deploy --dir=dist --site="e57afca7-f0
 
 ## Adding Media (photos, videos)
 
-- Place images in `public/images/` (or subfolder)
+### Preferred: Decap CMS media uploader (easiest — no server access)
+- Once the CMS is enabled at `morishaw.com/admin` (Netlify Identity + Git Gateway), photos are added via drag-and-drop right in the editor.
+- Uploaded files land in `public/images/uploads/` automatically and get committed to the repo by the CMS.
+- You (or any model) never need to touch the VPS/server.
+
+### Alternate: send photos in chat
+- Drop the photo in chat → download → place in `public/images/` → optimize → build + deploy.
+
+### Manual rules
+- Place images in `public/images/` (or subfolder like `images/uploads/`)
 - Reference in `.astro` as `/images/filename.jpg`
 - Logos → `public/images/logos/` as PNG, max ~100KB
+- Photos: JPG preferred, keep hero under ~200KB; WebP for max compression
+- The two photo placeholders to wire real images into:
+  - Hero: `src/pages/index.astro` (block: `hero__photo-placeholder`)
+  - About: `src/pages/about.astro` (block: `about-photo-placeholder`)
 
 ---
 
