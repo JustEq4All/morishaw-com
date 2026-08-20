@@ -1,0 +1,59 @@
+# CloudCannon configuration for morishaw.com (Astro)
+
+# The source that CloudCannon watches in the git repo.
+source: src
+
+# Collections — CloudCannon reads the content JSON and exposes them
+# for editing. These power the Events / Writings / Talks / Testimonials
+# editors that Gilberto updates himself.
+collections_config:
+  content:
+    path: ../src/content
+    name: Site Content
+    icon: content
+    disable_add: true
+    schemas:
+      events:
+        path: events
+        name: Event
+        icon: event
+        description: A speaking appearance, conference, or event
+      writings:
+        path: writings
+        name: Writing
+        icon: article
+        description: A published essay, op-ed, or press piece
+      talks:
+        path: talks
+        name: Talk
+        icon: mic
+        description: A signature speaking topic
+      testimonials:
+        path: testimonials
+        name: Testimonial
+        icon: quote
+        description: A quote from an organizer or client
+
+# Inputs that are consistent across all collections.
+_data_config:
+  inputs_options:
+    font_size: 14
+    width: 100%
+
+# Editor config — visual page editor.
+editor:
+  visual:
+    canvas_options:
+      css: []
+      preview_body_class: auto
+
+# Netlify deploy — when CloudCannon publishes an edit, it triggers
+# the site's Netlify build via webhook (set up in the dashboard).
+ssg:
+  astro:
+    build_command: npm run build
+    output: dist
+
+# Sitemap / preview
+preview:
+  enabled: true
