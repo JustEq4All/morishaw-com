@@ -8,6 +8,16 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+  <script>
+    // Initialize the Netlify Identity widget so it can process
+    // invite / confirmation tokens in the URL on page load.
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', (user) => {
+        // Widget ready. If a token is in the URL it is processed automatically.
+      });
+      window.netlifyIdentity.init();
+    }
+  </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
