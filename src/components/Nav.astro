@@ -1,0 +1,134 @@
+---
+const navLinks = [
+  { href: "/about",      label: "About" },
+  { href: "/speaking",   label: "Speaking" },
+  { href: "/consulting", label: "Consulting" },
+  { href: "/work",       label: "Work" },
+  { href: "/writings",   label: "Writings" },
+  { href: "/events",     label: "Events" },
+  { href: "/contact",    label: "Contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="container nav__inner">
+    <a href="/" class="nav__logo" aria-label="Gilberto Morishaw — Home">
+      <span class="nav__logo-name">Gilberto Morishaw</span>
+    </a>
+
+    <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav__links" role="list">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class={`nav__link ${currentPath.startsWith(link.href) ? 'nav__link--active' : ''}`}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a href="/speaking#book" class="btn btn-primary nav__cta">Book to speak</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--off-white);
+  border-bottom: 1px solid var(--grey-light);
+  backdrop-filter: blur(8px);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: var(--space-md);
+}
+.nav__logo {
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.nav__logo-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  list-style: none;
+}
+.nav__link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--grey);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+.nav__link:hover,
+.nav__link--active {
+  color: var(--ink);
+  border-bottom-color: var(--bronze);
+}
+.nav__cta { margin-left: var(--space-xs); font-size: 0.85rem; padding: 0.5rem 1.2rem; }
+.nav__toggle { display: none; }
+
+@media (max-width: 900px) {
+  .nav__toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav__toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--ink);
+    transition: all var(--transition);
+  }
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--off-white);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--grey-light);
+    gap: var(--space-sm);
+  }
+  .nav__links.open { display: flex; }
+  .nav__cta { margin-left: 0; }
+}
+</style>
+
+<script>
+  const toggle = document.querySelector('.nav__toggle');
+  const links = document.querySelector('.nav__links');
+  toggle?.addEventListener('click', () => {
+    const open = links?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+</script>

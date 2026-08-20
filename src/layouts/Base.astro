@@ -1,0 +1,84 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = "Gilberto Morishaw — Speaker, Systems Consultant, and Convenor. From Curaçao to the rooms where the future gets decided.",
+  ogImage = "/images/og-default.jpg"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href={canonicalURL} />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- JSON-LD: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gilberto Morishaw",
+    "url": "https://morishaw.com",
+    "sameAs": [
+      "https://www.instagram.com/bertmangil",
+      "https://www.linkedin.com/in/gilberto-morishaw-b92a23108",
+      "https://www.speakersacademy.com/en/speaker/gilberto-morishaw/"
+    ],
+    "jobTitle": "Speaker, Systems Consultant, Convenor",
+    "description": "Dutch Caribbean systems transformation consultant, speaker, and convenor. Based in The Hague."
+  }
+  </script>
+</head>
+<body>
+  <slot name="nav" />
+  <main>
+    <slot />
+  </main>
+  <slot name="footer" />
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

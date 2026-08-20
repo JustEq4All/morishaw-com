@@ -1,17 +1,268 @@
 ---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 
+const credentials = [
+  { label: "Davos 2025 + 2026", sub: "World Economic Forum", url: "https://www.weforum.org/" },
+  { label: "EU Youth Sounding Board", sub: "European Commission DG INTPA", url: "https://ec.europa.eu/international-partnerships/" },
+  { label: "John Lewis Senior Fellow", sub: "Humanity in Action", url: "https://humanityinaction.org/" },
+  { label: "TILN Fellow", sub: "German Marshall Fund", url: "https://www.gmfus.org/" },
+  { label: "Climate Reality Leader", sub: "Al Gore's Climate Reality Project", url: "https://www.climaterealityproject.org/" },
+  { label: "Co-Director", sub: "Creative Regenerative Futures Foundation", url: "https://crf-foundation.org/" },
+  { label: "Head of Impact (former)", sub: "Kolektivo", url: "https://www.kolektivo.cw/" },
+  { label: "Global Shaper", sub: "WEF Amsterdam Hub", url: "https://www.weforum.org/communities/gs-amsterdam/" },
+];
+
+const logos = [
+  { file: "kolektivo.png", name: "Kolektivo", url: "https://www.kolektivo.cw/" },
+  { file: "weforum.png", name: "World Economic Forum", url: "https://www.weforum.org/" },
+  { file: "speakers-academy.png", name: "Speakers Academy", url: "https://www.speakersacademy.com/en/speaker/gilberto-morishaw/" },
+  { file: "humanity-in-action.png", name: "Humanity in Action", url: "https://humanityinaction.org/" },
+  { file: "ebbf.png", name: "ebbf", url: "https://ebbf.org/" },
+  { file: "pakhuisdezwijger.png", name: "Pakhuis de Zwijger", url: "https://www.pakhuisdezwijger.nl/" },
+  { file: "drift.png", name: "DRIFT", url: "https://drift.eur.nl/" },
+  { file: "crf-foundation.png", name: "CRFF", url: "https://crf-foundation.org/" },
+  { file: "weconnect.png", name: "WeConnect", url: "https://stichtingweconnect.nl/" },
+  { file: "diaspora-for-development.png", name: "Diaspora for Development", url: "https://diasporafordevelopment.eu/" },
+  { file: "climate-reality.png", name: "Climate Reality", url: "https://www.climaterealityproject.org/" },
+  { file: "eu.png", name: "European Commission", url: "https://ec.europa.eu/" },
+];
+
+const selectedWork = [
+  {
+    title: "Kolektivo Grants Program",
+    desc: "Designed impact metrics and managed 17+ local currency initiatives and 7 CuraDAI stablecoin grant programmes for a regenerative local economy in Curaçao.",
+    tags: ["Finance/Web3", "Community"],
+    href: "/work#kolektivo"
+  },
+  {
+    title: "Bread Cooperative",
+    desc: "$500K BREAD in circulation, $50K+ distributed to public goods through democratic voting. Open-source Web3 financial infrastructure for underserved communities.",
+    tags: ["Finance/Web3", "Policy"],
+    href: "/work#bread"
+  },
+  {
+    title: "EU Youth Sounding Board",
+    desc: "Selected 1 of 25 from 4,000+ applicants across 150 countries. Directly advised Commissioner Urpilainen (DG INTPA) on youth and development policy.",
+    tags: ["Policy", "Facilitation"],
+    href: "/work#eu-youth"
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base
+  title="Gilberto Morishaw — Speaker, Systems Consultant & Convenor"
+  description="Dutch Caribbean speaker, systems consultant, and convenor. From Curaçao to the rooms where the future gets decided."
+>
+  <Nav slot="nav" />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <p class="section-label">Speaker · Consultant · Convenor</p>
+        <h1 class="hero__headline">
+          From the islands to the rooms where<br/>
+          <em>the future gets decided</em>
+        </h1>
+        <p class="hero__sub">
+          Dutch Caribbean systems thinker, convenor, and speaker.
+          Based in The Hague. Operating globally.
+        </p>
+        <div class="hero__ctas">
+          <a href="/speaking" class="btn btn-primary">Book me to speak</a>
+          <a href="/consulting" class="btn btn-outline">Work with me</a>
+        </div>
+      </div>
+      <div class="hero__image">
+        <!-- Replace with real portrait -->
+        <div class="hero__photo-placeholder" aria-hidden="true">
+          <span>Photo coming</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO-PATH BLOCK -->
+  <section class="two-path">
+    <div class="container two-path__grid">
+      <a href="/speaking" class="path-card path-card--primary reveal">
+        <span class="path-card__label">For event organizers</span>
+        <h3>Bring me to your stage</h3>
+        <p>Keynotes, panels, moderation, facilitation, and faculty — across climate, governance, Web3, and youth leadership.</p>
+        <span class="path-card__cta">See speaking topics →</span>
+      </a>
+      <a href="/consulting" class="path-card reveal">
+        <span class="path-card__label">For organisations</span>
+        <h3>Engage my thinking</h3>
+        <p>Strategy, systems design, regenerative finance, policy advisory, and convening — for organisations working at the edge of what's changing.</p>
+        <span class="path-card__cta">See consulting work →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS STRIP -->
+  <section class="credentials">
+    <div class="container">
+      <p class="section-label reveal">Where I've stood</p>
+      <div class="credentials__grid">
+        {credentials.map(c => (
+          <a href={c.url} target="_blank" rel="noopener" class="credential-chip reveal">
+            <span class="credential-chip__label">{c.label}</span>
+            <span class="credential-chip__sub">{c.sub}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section class="work-preview">
+    <div class="container">
+      <p class="section-label reveal">Selected work</p>
+      <h2 class="reveal">What I've built and done</h2>
+      <div class="divider reveal"></div>
+      <div class="work-preview__grid">
+        {selectedWork.map(w => (
+          <a href={w.href} class="work-card reveal">
+            <div class="work-card__tags">
+              {w.tags.map(t => <span class="tag">{t}</span>)}
+            </div>
+            <h3>{w.title}</h3>
+            <p>{w.desc}</p>
+            <span class="work-card__cta">Read more →</span>
+          </a>
+        ))}
+      </div>
+      <div class="work-preview__more reveal">
+        <a href="/work" class="btn btn-outline">See all work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER LOGOS -->
+  <section class="partners">
+    <div class="container">
+      <p class="section-label reveal">Organizations I've worked with</p>
+      <div class="logos-grid">
+        {logos.map(logo => (
+          <a href={logo.url} target="_blank" rel="noopener" class="logo-item reveal" aria-label={logo.name}>
+            <img src={`/images/logos/${logo.file}`} alt={logo.name} loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT PROMPT -->
+  <section class="home-contact">
+    <div class="container home-contact__inner reveal">
+      <h2>Let's talk</h2>
+      <p>Whether you're planning an event or navigating a challenge — I'd like to hear from you.</p>
+      <a href="/contact" class="btn btn-primary">Get in touch</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+/* Hero */
+.hero { padding: var(--space-xl) 0; background: var(--off-white); }
+.hero__inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); align-items: center; }
+.hero__headline { margin: var(--space-sm) 0; }
+.hero__headline em { font-style: italic; color: var(--bronze); }
+.hero__sub { font-size: 1.1rem; color: var(--grey); margin-bottom: var(--space-md); }
+.hero__ctas { display: flex; gap: var(--space-sm); flex-wrap: wrap; }
+.hero__photo-placeholder {
+  aspect-ratio: 3/4;
+  background: var(--grey-light);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--grey);
+  font-size: 0.9rem;
+}
+
+/* Two-path */
+.two-path { background: var(--ink); padding: var(--space-lg) 0; }
+.two-path__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+.path-card {
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--off-white);
+  text-decoration: none;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.path-card:hover { background: rgba(255,255,255,0.1); border-color: var(--bronze); }
+.path-card--primary { border-color: var(--bronze); }
+.path-card__label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bronze-light); }
+.path-card h3 { color: var(--off-white); font-size: 1.4rem; }
+.path-card p { color: rgba(250,247,242,0.7); font-size: 0.95rem; max-width: 100%; }
+.path-card__cta { font-size: 0.9rem; color: var(--bronze-light); margin-top: auto; }
+
+/* Credentials */
+.credentials { background: var(--bronze-pale); padding: var(--space-lg) 0; }
+.credentials__grid { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-md); }
+.credential-chip {
+  display: flex; flex-direction: column;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius);
+  background: var(--off-white);
+  border: 1px solid var(--grey-light);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.credential-chip:hover { border-color: var(--bronze); }
+.credential-chip__label { font-weight: 600; font-size: 0.9rem; color: var(--ink); }
+.credential-chip__sub { font-size: 0.78rem; color: var(--grey); }
+
+/* Work preview */
+.work-preview { padding: var(--space-xl) 0; }
+.work-preview__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-top: var(--space-md); }
+.work-card {
+  padding: var(--space-md);
+  border: 1px solid var(--grey-light);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: var(--ink);
+  display: flex; flex-direction: column; gap: 0.75rem;
+  transition: all var(--transition);
+}
+.work-card:hover { border-color: var(--bronze); box-shadow: 0 4px 24px rgba(164,117,81,0.1); }
+.work-card__tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.tag { font-size: 0.75rem; background: var(--bronze-pale); color: var(--bronze); padding: 0.2rem 0.6rem; border-radius: 99px; font-weight: 500; }
+.work-card h3 { font-size: 1.1rem; }
+.work-card p { font-size: 0.9rem; color: var(--grey); max-width: 100%; }
+.work-card__cta { font-size: 0.85rem; color: var(--bronze); margin-top: auto; }
+.work-preview__more { margin-top: var(--space-md); }
+
+/* Partners */
+.partners { background: var(--off-white); padding: var(--space-lg) 0; border-top: 1px solid var(--grey-light); }
+.logos-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-md); align-items: center; margin-top: var(--space-md); }
+.logo-item { display: flex; align-items: center; justify-content: center; opacity: 0.45; filter: grayscale(100%); transition: all var(--transition); }
+.logo-item:hover { opacity: 1; filter: grayscale(0%); }
+.logo-item img { max-height: 40px; max-width: 80px; object-fit: contain; }
+
+/* Home contact */
+.home-contact { background: var(--ink); padding: var(--space-lg) 0; }
+.home-contact__inner { text-align: center; }
+.home-contact__inner h2 { color: var(--off-white); margin-bottom: var(--space-sm); }
+.home-contact__inner p { color: var(--grey-light); margin: 0 auto var(--space-md); text-align: center; }
+
+@media (max-width: 900px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__image { display: none; }
+  .two-path__grid { grid-template-columns: 1fr; }
+  .work-preview__grid { grid-template-columns: 1fr; }
+  .logos-grid { grid-template-columns: repeat(3, 1fr); }
+}
+</style>

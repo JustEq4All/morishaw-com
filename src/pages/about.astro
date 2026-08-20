@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+<Base title="About — Gilberto Morishaw" description="The story behind the work: from Curaçao to The Hague to the world's most consequential rooms.">
+  <Nav slot="nav" />
+  <section class="about-hero">
+    <div class="container">
+      <p class="section-label">About</p>
+      <h1>Where I come from<br/><em>shapes where I go</em></h1>
+    </div>
+  </section>
+  <section class="about-story">
+    <div class="container about-story__inner">
+      <div class="about-story__text">
+        <div class="divider"></div>
+        <h2>The origin</h2>
+        <p>I grew up in Curaçao. On an island, you understand very quickly how small you are — and how vulnerable. You learn that if one thing goes wrong, everyone notices. That's not a metaphor. It's just life when you're surrounded by water and the system is fragile.</p>
+        <p>That's where my understanding of interconnectedness started. Not in a classroom, but from growing up in a place where community isn't a concept — it's the infrastructure.</p>
+        <h2>The journey</h2>
+        <p>I came to the Netherlands for university. Leiden, The Hague campus — the city of international justice and peace. I studied Public Administration, then stayed for a Master's in International & European Governance alongside Crisis and Security Management.</p>
+        <p>Between degrees I did something that turned out to matter a lot: I read. Over a hundred books — philosophy, economics, human rights, social justice, science. Not for any course. Just because I needed to understand the world I was trying to change.</p>
+        <h2>The thread</h2>
+        <p>The thing that connects my work — across climate, regenerative finance, Web3, policy, facilitation, and the arts — is a single question I keep returning to: <em>how do we build systems that actually work for people at the margins?</em></p>
+        <p>Not people at the margins as an afterthought. As the design brief.</p>
+        <p>That question has taken me to Davos, to EU Parliament, to the International Court of Justice's climate hearings, to building real blockchain infrastructure for underserved communities, to running grants programmes in Curaçao using local stablecoins. Different rooms, same question.</p>
+        <h2>The person</h2>
+        <p>I'm a musician and a poet as much as I'm a consultant and speaker. I live in The Hague. I speak English, Dutch, Papiamentu, Spanish, and French. I'm completing two Master's degrees simultaneously at Leiden University. I believe genuinely good conversations can change things — and I've spent years designing the conditions for them to happen.</p>
+      </div>
+      <aside class="about-story__aside">
+        <div class="about-photo-placeholder">Photo</div>
+        <div class="about-credentials">
+          <h4>Fellowships</h4>
+          <ul>
+            <li>John Lewis Senior Fellow — Humanity in Action</li>
+            <li>TILN Fellow — German Marshall Fund</li>
+            <li>Davos50 — World Economic Forum</li>
+            <li>Climate Reality Leader (Al Gore)</li>
+            <li>EU Youth Sounding Board — DG INTPA (1 of 25 / 4,000+ applicants)</li>
+          </ul>
+          <h4>Current roles</h4>
+          <ul>
+            <li>Co-Director — CRFF</li>
+            <li>Community & Partnerships Lead — Bread Cooperative</li>
+            <li>Global Shaper — WEF Amsterdam</li>
+            <li>Regenerative Consultant — Creativo Design</li>
+          </ul>
+          <h4>Languages</h4>
+          <p>Papiamentu (native) · English · Dutch · Spanish · French</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <section class="about-ctas">
+    <div class="container about-ctas__inner">
+      <a href="/speaking" class="btn btn-primary">Invite me to speak</a>
+      <a href="/writings" class="btn btn-outline">Read my writing</a>
+      <a href="/contact" class="btn btn-outline">Get in touch</a>
+    </div>
+  </section>
+  <Footer slot="footer" />
+</Base>
+<style>
+.about-hero { padding: var(--space-xl) 0; background: var(--ink); color: var(--off-white); }
+.about-hero .section-label { color: var(--bronze-light); }
+.about-hero h1 { color: var(--off-white); margin-top: var(--space-sm); }
+.about-hero h1 em { color: var(--bronze-light); font-style: italic; }
+.about-story { padding: var(--space-xl) 0; }
+.about-story__inner { display: grid; grid-template-columns: 1fr 380px; gap: var(--space-xl); align-items: start; }
+.about-story__text h2 { margin: var(--space-md) 0 var(--space-sm); font-size: 1.4rem; }
+.about-story__text p { color: var(--grey); margin-bottom: var(--space-sm); }
+.about-story__text em { color: var(--ink); font-style: italic; }
+.about-photo-placeholder { aspect-ratio: 3/4; background: var(--grey-light); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--grey); margin-bottom: var(--space-md); }
+.about-credentials h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--bronze); margin: var(--space-sm) 0 0.5rem; }
+.about-credentials ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.about-credentials li { font-size: 0.88rem; color: var(--grey); padding-left: 1rem; position: relative; }
+.about-credentials li::before { content: "·"; position: absolute; left: 0; color: var(--bronze); }
+.about-credentials p { font-size: 0.88rem; color: var(--grey); max-width: 100%; }
+.about-ctas { background: var(--bronze-pale); padding: var(--space-lg) 0; }
+.about-ctas__inner { display: flex; gap: var(--space-sm); flex-wrap: wrap; }
+@media (max-width: 768px) { .about-story__inner { grid-template-columns: 1fr; } .about-photo-placeholder { display: none; } }
+</style>

@@ -1,0 +1,151 @@
+/* ============================================
+   MORISHAW.COM — Global Styles
+   Design system: bronze / off-white / ink
+   ============================================ */
+
+:root {
+  --ink:          #1A1A1A;
+  --off-white:    #FAF7F2;
+  --bronze:       #A47551;
+  --bronze-light: #C49A7A;
+  --bronze-pale:  #EDE0D4;
+  --grey:         #6B6B6B;
+  --grey-light:   #E5E0D9;
+  --success:      #4A7C59;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+
+  --space-xs:   0.5rem;
+  --space-sm:   1rem;
+  --space-md:   2rem;
+  --space-lg:   4rem;
+  --space-xl:   8rem;
+
+  --radius:     6px;
+  --radius-lg:  12px;
+
+  --transition: 0.25s ease;
+
+  --max-w:      1100px;
+  --max-w-text: 680px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--ink);
+}
+h1 { font-size: clamp(2.2rem, 5vw, 4rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.6rem); }
+h3 { font-size: clamp(1.2rem, 2vw, 1.6rem); }
+h4 { font-size: 1.1rem; }
+
+p { max-width: var(--max-w-text); }
+p + p { margin-top: 1rem; }
+
+a { color: var(--bronze); text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--ink); }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+section {
+  padding: var(--space-xl) 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  border: 2px solid transparent;
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--bronze);
+  color: var(--off-white);
+  border-color: var(--bronze);
+}
+.btn-primary:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--off-white);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn-outline:hover {
+  background: var(--ink);
+  color: var(--off-white);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Section labels */
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: var(--space-sm);
+}
+
+/* Divider */
+.divider {
+  width: 48px;
+  height: 3px;
+  background: var(--bronze);
+  margin: var(--space-sm) 0 var(--space-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+@media (max-width: 768px) {
+  section { padding: var(--space-lg) 0; }
+  .container { padding: 0 var(--space-sm); }
+}

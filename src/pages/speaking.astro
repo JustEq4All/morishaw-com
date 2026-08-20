@@ -1,0 +1,314 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+import '../styles/global.css';
+
+const talks = (await getCollection('talks')).sort((a, b) => a.data.order - b.data.order);
+const testimonials = (await getCollection('testimonials')).filter(t => t.data.type === 'speaking');
+
+const venues = [
+  "World Economic Forum Annual Meeting (Davos 2025, 2026)",
+  "EU Parliament",
+  "COP27 · COP28 · COP30",
+  "World Bank",
+  "One Young World (London)",
+  "Think & Do 2025, Centre for Future Generations (Brussels)",
+  "Funding the Commons (Berlin 2025)",
+  "Dappcon Berlin · Neocypherpunk Summit",
+  "Oxfam Novib Youth for Change (in presence of Queen Máxima)",
+  "Witness Stand for Climate Justice — address to the ICJ",
+  "ENAR Climate Justice Academy (Slovenia)",
+  "PYM Impact Days 2026",
+];
+
+const formats = [
+  { name: "Keynote", desc: "45–60 min talk that opens or anchors an event" },
+  { name: "Panel", desc: "Moderated discussion with other experts" },
+  { name: "Moderation", desc: "Gilberto facilitates and holds the space" },
+  { name: "Workshop", desc: "Half or full-day interactive session" },
+  { name: "Faculty/Residency", desc: "Multi-day programme design + delivery" },
+  { name: "Ceremony", desc: "Openings, closings, and special occasions" },
+];
+---
+
+<Base
+  title="Speaking — Gilberto Morishaw"
+  description="Book Gilberto Morishaw for keynotes, panels, moderation, and workshops. Topics: leadership, systems change, climate, Web3, and youth governance."
+>
+  <Nav slot="nav" />
+
+  <!-- HERO -->
+  <section class="speaking-hero">
+    <div class="container">
+      <p class="section-label">Speaking</p>
+      <h1>I don't lecture.<br/><em>I open something.</em></h1>
+      <p class="speaking-hero__sub">
+        From Davos to the ICJ's climate court — I bring rooms into real conversation.
+        Keynotes, panels, moderation, workshops, and faculty across climate, governance, Web3, and youth leadership.
+      </p>
+      <div class="speaking-hero__ctas">
+        <a href="#book" class="btn btn-primary">Invite me to speak</a>
+        <a href="#epk" class="btn btn-outline">Download Speaker One-Pager</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TALKS -->
+  <section class="talks">
+    <div class="container">
+      <p class="section-label reveal">Signature talks</p>
+      <h2 class="reveal">What I speak about</h2>
+      <div class="divider reveal"></div>
+      <div class="talks__grid">
+        {talks.map(talk => (
+          <div class="talk-card reveal">
+            <h3>{talk.data.title}</h3>
+            <p>{talk.data.description}</p>
+            <div class="talk-card__formats">
+              {talk.data.formats.map(f => <span class="tag">{f}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATS -->
+  <section class="formats">
+    <div class="container">
+      <p class="section-label reveal">How I show up</p>
+      <h2 class="reveal">Formats</h2>
+      <div class="divider reveal"></div>
+      <div class="formats__grid">
+        {formats.map(f => (
+          <div class="format-item reveal">
+            <h4>{f.name}</h4>
+            <p>{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- VENUES -->
+  <section class="venues">
+    <div class="container">
+      <p class="section-label reveal">Where I've spoken</p>
+      <h2 class="reveal">Stages and rooms</h2>
+      <div class="divider reveal"></div>
+      <ul class="venues__list">
+        {venues.map(v => (
+          <li class="venue-item reveal">{v}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- VIDEO placeholder -->
+  <section class="video-section">
+    <div class="container reveal">
+      <p class="section-label">See me speak</p>
+      <div class="video-placeholder">
+        <p>Video reel coming — <a href="https://www.youtube.com/watch?v=2WC2hd6FAdI" target="_blank" rel="noopener">watch Witness Stand for Climate Justice</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  {testimonials.length > 0 && (
+    <section class="testimonials">
+      <div class="container">
+        <p class="section-label reveal">What organizers say</p>
+        <div class="testimonials__grid">
+          {testimonials.map(t => (
+            <blockquote class="testimonial reveal">
+              <p>"{t.data.quote}"</p>
+              <footer>
+                <strong>{t.data.name}</strong>
+                <span>{t.data.role}, {t.data.organisation}</span>
+              </footer>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="container">
+      <p class="section-label reveal">How it works</p>
+      <h2 class="reveal">Booking process</h2>
+      <div class="divider reveal"></div>
+      <div class="process__steps">
+        <div class="process__step reveal">
+          <span class="process__num">01</span>
+          <h4>Inquire</h4>
+          <p>Fill in the form below with your event details — date, format, topic, and audience.</p>
+        </div>
+        <div class="process__step reveal">
+          <span class="process__num">02</span>
+          <h4>Brief call</h4>
+          <p>We schedule a 20-minute call to align on what the event needs and how I can serve it best.</p>
+        </div>
+        <div class="process__step reveal">
+          <span class="process__num">03</span>
+          <h4>Confirm</h4>
+          <p>We agree on the details, I prepare something worth showing up for.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EPK LEAD MAGNET -->
+  <section id="epk" class="epk">
+    <div class="container epk__inner reveal">
+      <div>
+        <p class="section-label">Speaker One-Pager</p>
+        <h3>Need to pitch internally?</h3>
+        <p>Download the Speaker One-Pager — everything your team needs to make the case: bio, talk topics, venue list, and contact details. One page.</p>
+      </div>
+      <form class="epk__form" name="epk-download" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="epk-download" />
+        <input type="email" name="email" placeholder="Your email address" required />
+        <button type="submit" class="btn btn-primary">Send me the One-Pager</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <section id="book" class="book">
+    <div class="container">
+      <p class="section-label reveal">Book Gilberto</p>
+      <h2 class="reveal">Invite me to speak</h2>
+      <div class="divider reveal"></div>
+      <form class="booking-form reveal" name="speaking-inquiry" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="speaking-inquiry" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="org">Organisation</label>
+            <input type="text" id="org" name="organisation" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="event-type">Event type</label>
+            <select id="event-type" name="event-type">
+              <option value="">Select format</option>
+              <option>Keynote</option>
+              <option>Panel</option>
+              <option>Moderation</option>
+              <option>Workshop</option>
+              <option>Faculty/Residency</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date">Event date (approx.)</label>
+            <input type="text" id="date" name="event-date" placeholder="e.g. March 2027" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Your email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Tell me about the event</label>
+          <textarea id="message" name="message" rows="5" placeholder="Audience, theme, what you're hoping to create..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send inquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+.speaking-hero { padding: var(--space-xl) 0; background: var(--ink); color: var(--off-white); }
+.speaking-hero .section-label { color: var(--bronze-light); }
+.speaking-hero h1 { color: var(--off-white); margin: var(--space-sm) 0; }
+.speaking-hero h1 em { color: var(--bronze-light); font-style: italic; }
+.speaking-hero__sub { color: rgba(250,247,242,0.75); max-width: 600px; margin-bottom: var(--space-md); }
+.speaking-hero__ctas { display: flex; gap: var(--space-sm); flex-wrap: wrap; }
+.speaking-hero .btn-outline { color: var(--off-white); border-color: rgba(250,247,242,0.4); }
+.speaking-hero .btn-outline:hover { background: var(--off-white); color: var(--ink); }
+
+.talks { padding: var(--space-xl) 0; }
+.talks__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-md); }
+.talk-card { padding: var(--space-md); border: 1px solid var(--grey-light); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 1rem; transition: border-color var(--transition); }
+.talk-card:hover { border-color: var(--bronze); }
+.talk-card h3 { font-size: 1.15rem; }
+.talk-card p { font-size: 0.9rem; color: var(--grey); max-width: 100%; flex: 1; }
+.talk-card__formats { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tag { font-size: 0.75rem; background: var(--bronze-pale); color: var(--bronze); padding: 0.2rem 0.6rem; border-radius: 99px; font-weight: 500; }
+
+.formats { background: var(--bronze-pale); padding: var(--space-lg) 0; }
+.formats__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-top: var(--space-md); }
+.format-item h4 { margin-bottom: 0.4rem; }
+.format-item p { font-size: 0.9rem; color: var(--grey); max-width: 100%; }
+
+.venues { padding: var(--space-xl) 0; }
+.venues__list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem var(--space-lg); margin-top: var(--space-md); }
+.venue-item { padding-left: 1.2rem; position: relative; font-size: 0.95rem; }
+.venue-item::before { content: "→"; position: absolute; left: 0; color: var(--bronze); }
+
+.video-section { background: var(--grey-light); padding: var(--space-lg) 0; }
+.video-placeholder { background: var(--ink); border-radius: var(--radius-lg); padding: var(--space-xl) var(--space-lg); text-align: center; color: var(--grey); margin-top: var(--space-md); }
+.video-placeholder a { color: var(--bronze-light); }
+
+.testimonials { padding: var(--space-xl) 0; background: var(--off-white); }
+.testimonials__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-md); }
+.testimonial { border-left: 3px solid var(--bronze); padding-left: var(--space-md); }
+.testimonial p { font-size: 1.05rem; font-style: italic; color: var(--ink); margin-bottom: 1rem; max-width: 100%; }
+.testimonial footer { display: flex; flex-direction: column; gap: 0.2rem; }
+.testimonial strong { font-size: 0.9rem; }
+.testimonial span { font-size: 0.85rem; color: var(--grey); }
+
+.process { padding: var(--space-xl) 0; background: var(--ink); }
+.process .section-label { color: var(--bronze-light); }
+.process h2 { color: var(--off-white); }
+.process .divider { background: var(--bronze); }
+.process__steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-top: var(--space-md); }
+.process__step { color: var(--off-white); }
+.process__num { font-family: var(--font-display); font-size: 3rem; color: var(--bronze); line-height: 1; display: block; margin-bottom: 0.5rem; }
+.process__step h4 { color: var(--off-white); margin-bottom: 0.4rem; }
+.process__step p { color: rgba(250,247,242,0.65); font-size: 0.9rem; max-width: 100%; }
+
+.epk { background: var(--bronze-pale); padding: var(--space-lg) 0; }
+.epk__inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); align-items: center; }
+.epk__form { display: flex; flex-direction: column; gap: var(--space-sm); }
+.epk__form input { padding: 0.8rem 1rem; border: 1px solid var(--grey-light); border-radius: var(--radius); font-family: var(--font-body); font-size: 0.95rem; background: var(--off-white); width: 100%; }
+
+.book { padding: var(--space-xl) 0; }
+.booking-form { max-width: 680px; display: flex; flex-direction: column; gap: var(--space-sm); margin-top: var(--space-md); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+.form-group input, .form-group select, .form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--grey-light);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: var(--off-white);
+  transition: border-color var(--transition);
+  width: 100%;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--bronze);
+}
+
+@media (max-width: 768px) {
+  .talks__grid, .formats__grid, .process__steps, .epk__inner, .testimonials__grid { grid-template-columns: 1fr; }
+  .venues__list { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>

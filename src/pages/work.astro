@@ -1,0 +1,229 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const projects = [
+  {
+    id: "kolektivo",
+    title: "Kolektivo Grants Program",
+    role: "Head of Impact, Equity & Inclusion",
+    org: "Kolektivo",
+    period: "2020–2023",
+    tags: ["Finance/Web3", "Community", "Policy"],
+    challenge: "Curaçao needed economic infrastructure that kept value circulating locally and rewarded regenerative behaviour — not extractive tourism or remittances that left the island.",
+    approach: "Designed impact and equity metrics for a regenerative local economy. Managed a portfolio of 17+ local currency initiatives and 7 CuraDAI stablecoin grant programmes. Championed ReFi (Regenerative Finance) and Blockchain for Good in high-level meetings with policymakers and ministers.",
+    outcome: "17+ local currency initiatives supported. 7 stablecoin grant programmes executed. Represented Kolektivo at COP27 and COP28. Built partnerships with institutional actors across Caribbean governance and international development.",
+  },
+  {
+    id: "bread",
+    title: "Bread Cooperative",
+    role: "Community & Partnerships Lead / Strategic Directive Committee",
+    org: "Bread Cooperative",
+    period: "2024–present",
+    tags: ["Finance/Web3", "Community"],
+    challenge: "Communities in the Global South and Europe lack access to basic financial infrastructure — savings tools, credit history, democratic funding mechanisms — that wealthier communities take for granted.",
+    approach: "Built community engagement and partnerships connecting Bread's open-source Web3 infrastructure (Solidarity Fund, Stacks savings circles, BreadKit) with frontline communities. Serves on the Strategic Directive Committee guiding cooperative direction. Represented Bread at Dappcon Berlin and Neocypherpunk Summit.",
+    outcome: "$500K BREAD in circulation. $50K+ distributed to public goods through democratic voting. 200+ BREAD holders. Deployed on Gnosis Chain, Optimism, and Stellar. Active pilots with Chain Coop (Nigeria).",
+  },
+  {
+    id: "eu-youth",
+    title: "EU Youth Sounding Board",
+    role: "Youth Sounding Board Member",
+    org: "European Commission — DG INTPA",
+    period: "2021–2023",
+    tags: ["Policy", "Facilitation"],
+    challenge: "The European Commission's international partnerships directorate needed genuine youth perspectives — from diverse global contexts — to shape development policy. Not consultation theater, but direct advisory access.",
+    approach: "Selected as 1 of 25 members from 4,000+ applicants across 150+ countries — the first-ever member from the Kingdom of the Netherlands. Directly advised Commissioner Jutta Urpilainen on youth, development, and partnership policy.",
+    outcome: "Two-year advisory tenure. First Kingdom of the Netherlands representative. Contributed to policy frameworks affecting development cooperation across Africa, Caribbean, and Pacific regions.",
+  },
+  {
+    id: "meaningful-mornings",
+    title: "Meaningful Mornings",
+    role: "Founder & Programme Creator",
+    org: "ebbf",
+    period: "2018–present",
+    tags: ["Facilitation", "Community"],
+    challenge: "Professional spaces rarely create room for the kinds of conversations that actually shift how people think and act. Networking events are shallow. Conferences are performative. Something else was needed.",
+    approach: "Founded a dialogue series in 2018 that brings people together for early-morning conversations designed around genuine depth, cross-sector exchange, and the kind of honesty that's harder to access in formal settings.",
+    outcome: "Running since 2018. Featured in WEF Agenda ('Meaningful Conversations Can Transform Our World'). Active ebbf programme. Model replicated in multiple contexts.",
+  },
+  {
+    id: "keda-kas",
+    title: "Keda Kas",
+    role: "Founder",
+    org: "Independent",
+    period: "2020",
+    tags: ["Community", "Policy"],
+    challenge: "COVID-19 hit Caribbean communities in the Netherlands hard. There was no coordinated platform for connection, mental health support, or information — and the mainstream Dutch response didn't speak to Caribbean realities.",
+    approach: "Founded Keda Kas ('How are you?' in Papiamentu) during the first lockdown. Built a digital platform connecting Caribbean communities across the Netherlands and the islands through discussions, mental health sessions, and vlogs.",
+    outcome: "Featured on Caribisch Netwerk (NTR). Became a meaningful point of connection during an isolating period. Demonstrated model for diaspora-responsive crisis communication.",
+  },
+  {
+    id: "access-for-all",
+    title: "Access for All: Empowering Mobility",
+    role: "Project Lead",
+    org: "WEF Global Shapers Community",
+    period: "2022",
+    tags: ["Community", "Policy"],
+    challenge: "People with limited mobility face daily barriers that most infrastructure ignores. The systems designed for the 'average' user systematically exclude those who fall outside it.",
+    approach: "Designed a digital tool helping those with limited mobility navigate urban spaces. Submitted to the Global Shapers Community worldwide Innovation Prize.",
+    outcome: "Won the Global Shapers Community worldwide Innovation Prize. Recognised by the World Economic Forum.",
+  },
+  {
+    id: "ocan",
+    title: "OCAN Supervisory Board",
+    role: "Chair of Supervisory Board",
+    org: "OCAN (Organisashon Kòrsou Aliado Nashonal)",
+    period: "2020–2024",
+    tags: ["Policy", "Community"],
+    challenge: "Caribbean communities in the Netherlands needed stronger institutional representation and governance — an organisation that could advocate effectively, coordinate across the community, and engage Dutch institutions at the highest level.",
+    approach: "Served as Chair of the Supervisory Board, providing strategic governance oversight. Led the OCAN delegation in a formal courtesy visit to the Governor of Curaçao (February 2026). Represented OCAN at COP26 as part of the delegation.",
+    outcome: "Strengthened governance and institutional credibility of a key Caribbean-Netherlands civil society organisation. High-level governmental engagement at the Dutch-Caribbean interface.",
+  },
+  {
+    id: "smeltkroes",
+    title: "Smeltkroes",
+    role: "Founder",
+    org: "Independent",
+    period: "2016–2018",
+    tags: ["Community", "Creative"],
+    challenge: "The integration narrative in the Netherlands was failing — abstract policy debates, no real human contact. Refugees were being processed, not met.",
+    approach: "Founded Smeltkroes ('Melting Pot'), an impact startup using pop-up restaurants as cultural bridges. Refugees cooked their food, told their stories, and shared a table with Dutch communities.",
+    outcome: "Multiple successful pop-ups in The Hague. Featured in national press. Demonstrated that human-scale cultural exchange could do what policy couldn't.",
+  },
+];
+
+const filters = ["All", "Finance/Web3", "Policy", "Facilitation", "Community", "Creative"];
+---
+
+<Base
+  title="Work — Gilberto Morishaw"
+  description="Selected projects across regenerative finance, policy, facilitation, and community — with real outcomes."
+>
+  <Nav slot="nav" />
+
+  <section class="work-hero">
+    <div class="container">
+      <p class="section-label">Work</p>
+      <h1>Projects, not presentations</h1>
+      <p class="work-hero__sub">A selection of the work — what the challenge was, how I approached it, and what came out the other side.</p>
+    </div>
+  </section>
+
+  <section class="work-list">
+    <div class="container">
+      <div class="work-filters reveal" role="group" aria-label="Filter projects">
+        {filters.map((f, i) => (
+          <button class={`filter-btn ${i === 0 ? 'active' : ''}`} data-filter={f}>{f}</button>
+        ))}
+      </div>
+
+      <div class="projects-grid">
+        {projects.map(p => (
+          <article id={p.id} class={`project-card reveal`} data-tags={p.tags.join(',')}>
+            <header class="project-card__header">
+              <div class="project-card__meta">
+                <span class="project-card__org">{p.org}</span>
+                <span class="project-card__period">{p.period}</span>
+              </div>
+              <h2>{p.title}</h2>
+              <p class="project-card__role">{p.role}</p>
+              <div class="project-card__tags">
+                {p.tags.map(t => <span class="tag">{t}</span>)}
+              </div>
+            </header>
+            <div class="project-card__body">
+              <div class="project-card__section">
+                <h4>Challenge</h4>
+                <p>{p.challenge}</p>
+              </div>
+              <div class="project-card__section">
+                <h4>Approach</h4>
+                <p>{p.approach}</p>
+              </div>
+              <div class="project-card__section project-card__outcome">
+                <h4>Outcome</h4>
+                <p>{p.outcome}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="work-cta">
+    <div class="container work-cta__inner reveal">
+      <h3>Want to work together?</h3>
+      <p>I take on a small number of consulting engagements at a time — to do them properly.</p>
+      <div style="display:flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+        <a href="/consulting" class="btn btn-primary">See consulting services</a>
+        <a href="/contact" class="btn btn-outline">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+.work-hero { padding: var(--space-xl) 0; background: var(--ink); color: var(--off-white); }
+.work-hero .section-label { color: var(--bronze-light); }
+.work-hero h1 { color: var(--off-white); margin: var(--space-sm) 0; }
+.work-hero__sub { color: rgba(250,247,242,0.75); max-width: 560px; }
+
+.work-list { padding: var(--space-xl) 0; }
+
+.work-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: var(--space-lg); }
+.filter-btn { padding: 0.4rem 1rem; border: 1px solid var(--grey-light); border-radius: 99px; background: transparent; font-family: var(--font-body); font-size: 0.85rem; cursor: pointer; transition: all var(--transition); color: var(--grey); }
+.filter-btn:hover, .filter-btn.active { background: var(--bronze); border-color: var(--bronze); color: var(--off-white); }
+
+.projects-grid { display: flex; flex-direction: column; gap: var(--space-md); }
+.project-card { border: 1px solid var(--grey-light); border-radius: var(--radius-lg); overflow: hidden; transition: border-color var(--transition); }
+.project-card:hover { border-color: var(--bronze); }
+.project-card[data-hidden] { display: none; }
+
+.project-card__header { padding: var(--space-md); background: var(--bronze-pale); border-bottom: 1px solid var(--grey-light); }
+.project-card__meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.project-card__org { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--bronze); }
+.project-card__period { font-size: 0.8rem; color: var(--grey); }
+.project-card__header h2 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+.project-card__role { font-size: 0.9rem; color: var(--grey); margin-bottom: 0.75rem; }
+.project-card__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tag { font-size: 0.75rem; background: var(--off-white); color: var(--bronze); padding: 0.2rem 0.6rem; border-radius: 99px; font-weight: 500; }
+
+.project-card__body { padding: var(--space-md); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-md); }
+.project-card__section h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--bronze); margin-bottom: 0.5rem; font-family: var(--font-body); font-weight: 600; }
+.project-card__section p { font-size: 0.9rem; color: var(--grey); max-width: 100%; }
+.project-card__outcome p { color: var(--ink); font-weight: 500; }
+
+.work-cta { background: var(--bronze-pale); padding: var(--space-lg) 0; }
+.work-cta__inner h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+.work-cta__inner p { color: var(--grey); }
+
+@media (max-width: 768px) {
+  .project-card__body { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.project-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        if (filter === 'All' || card.dataset.tags?.includes(filter)) {
+          card.removeAttribute('data-hidden');
+        } else {
+          card.setAttribute('data-hidden', '');
+        }
+      });
+    });
+  });
+</script>

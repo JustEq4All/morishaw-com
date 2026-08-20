@@ -1,0 +1,166 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+import '../styles/global.css';
+
+const writings = (await getCollection('writings')).sort((a, b) => b.data.year - a.data.year);
+
+const outletLogos: Record<string, string> = {
+  "Newsweek": "https://www.google.com/s2/favicons?domain=newsweek.com&sz=64",
+  "Humanity in Action": "https://www.google.com/s2/favicons?domain=humanityinaction.org&sz=64",
+  "World Economic Forum Agenda": "https://www.google.com/s2/favicons?domain=weforum.org&sz=64",
+  "Diaspora for Development": "https://www.google.com/s2/favicons?domain=diasporafordevelopment.eu&sz=64",
+};
+
+const media = [
+  {
+    title: "How to Conquer Colonialism",
+    outlet: "Europe Matters Podcast",
+    type: "Podcast",
+    url: "#",
+    year: 2024,
+  },
+  {
+    title: "Witness Stand for Climate Justice",
+    outlet: "International Court of Justice (address)",
+    type: "Video",
+    url: "https://www.youtube.com/watch?v=2WC2hd6FAdI",
+    year: 2024,
+  },
+  {
+    title: "Curaçaoënaar vertegenwoordigt Caribisch gebied op top Davos",
+    outlet: "Amigoe / NU.cw",
+    type: "Press",
+    url: "#",
+    year: 2025,
+  },
+  {
+    title: "Caribbean Youth Encourage Unity During Corona Crisis",
+    outlet: "Caribisch Netwerk (NTR)",
+    type: "Press",
+    url: "#",
+    year: 2020,
+  },
+];
+---
+
+<Base
+  title="Writings — Gilberto Morishaw"
+  description="Published essays, op-eds, policy contributions, and media appearances by Gilberto Morishaw."
+>
+  <Nav slot="nav" />
+
+  <section class="writings-hero">
+    <div class="container">
+      <p class="section-label">Writings & Press</p>
+      <h1>On the record</h1>
+      <p class="writings-hero__sub">Essays, op-eds, policy contributions, and media — from Newsweek to the International Court of Justice.</p>
+    </div>
+  </section>
+
+  <section class="writings-list">
+    <div class="container">
+      <p class="section-label reveal">Published pieces</p>
+      <h2 class="reveal">Writing</h2>
+      <div class="divider reveal"></div>
+      <div class="writings-grid">
+        {writings.map(w => (
+          <a href={w.data.url} target="_blank" rel="noopener" class="writing-card reveal">
+            <div class="writing-card__top">
+              <span class="writing-card__format">{w.data.format}</span>
+              <span class="writing-card__year">{w.data.year}</span>
+            </div>
+            <h3>{w.data.title}</h3>
+            {w.data.summary && <p>{w.data.summary}</p>}
+            <div class="writing-card__outlet">
+              {outletLogos[w.data.outlet] && (
+                <img
+                  src={outletLogos[w.data.outlet]}
+                  alt=""
+                  class="writing-card__outlet-logo"
+                  width="16" height="16"
+                />
+              )}
+              <span>{w.data.outlet}</span>
+              <span class="writing-card__arrow">↗</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA / APPEARANCES -->
+  <section class="media">
+    <div class="container">
+      <p class="section-label reveal">Media & appearances</p>
+      <h2 class="reveal">In the press</h2>
+      <div class="divider reveal"></div>
+      <div class="media-grid">
+        {media.map(m => (
+          <a href={m.url} target="_blank" rel="noopener" class="media-card reveal">
+            <span class="media-card__type">{m.type}</span>
+            <h4>{m.title}</h4>
+            <p>{m.outlet} · {m.year}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FORTHCOMING -->
+  <section class="forthcoming">
+    <div class="container">
+      <p class="section-label reveal">Coming soon</p>
+      <h3 class="reveal">Draft & forthcoming (Caribisch Netwerk 2026)</h3>
+      <ul class="forthcoming__list reveal">
+        <li>Het Nationaal Klimaatburgerberaad — wat betekent het voor de eilanden?</li>
+        <li>IpKO — De verschuiving naar persoonlijke relaties in het Koninkrijk</li>
+        <li>De Koninkrijksconferentie — eindelijk, maar wat gaat het opleveren?</li>
+        <li>Praten genoeg — tijd voor echte actie</li>
+      </ul>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+.writings-hero { padding: var(--space-xl) 0; background: var(--ink); color: var(--off-white); }
+.writings-hero .section-label { color: var(--bronze-light); }
+.writings-hero h1 { color: var(--off-white); margin: var(--space-sm) 0; }
+.writings-hero__sub { color: rgba(250,247,242,0.75); max-width: 560px; }
+
+.writings-list { padding: var(--space-xl) 0; }
+.writings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-md); }
+.writing-card { border: 1px solid var(--grey-light); border-radius: var(--radius-lg); padding: var(--space-md); text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 0.75rem; transition: all var(--transition); }
+.writing-card:hover { border-color: var(--bronze); box-shadow: 0 4px 24px rgba(164,117,81,0.08); }
+.writing-card__top { display: flex; justify-content: space-between; align-items: center; }
+.writing-card__format { font-size: 0.75rem; background: var(--bronze-pale); color: var(--bronze); padding: 0.2rem 0.6rem; border-radius: 99px; font-weight: 500; }
+.writing-card__year { font-size: 0.8rem; color: var(--grey); }
+.writing-card h3 { font-size: 1.05rem; line-height: 1.3; }
+.writing-card p { font-size: 0.88rem; color: var(--grey); flex: 1; max-width: 100%; }
+.writing-card__outlet { display: flex; align-items: center; gap: 0.5rem; margin-top: auto; font-size: 0.85rem; color: var(--grey); }
+.writing-card__outlet-logo { border-radius: 3px; opacity: 0.7; }
+.writing-card__arrow { margin-left: auto; color: var(--bronze); }
+
+.media { background: var(--bronze-pale); padding: var(--space-xl) 0; }
+.media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md); margin-top: var(--space-md); }
+.media-card { background: var(--off-white); border-radius: var(--radius-lg); padding: var(--space-md); text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 0.5rem; transition: box-shadow var(--transition); }
+.media-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.media-card__type { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--bronze); }
+.media-card h4 { font-size: 1rem; }
+.media-card p { font-size: 0.85rem; color: var(--grey); max-width: 100%; }
+
+.forthcoming { padding: var(--space-lg) 0; border-top: 1px solid var(--grey-light); }
+.forthcoming h3 { font-size: 1.1rem; margin-bottom: var(--space-sm); }
+.forthcoming__list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.forthcoming__list li { font-size: 0.95rem; color: var(--grey); padding-left: 1.2rem; position: relative; font-style: italic; }
+.forthcoming__list li::before { content: "→"; position: absolute; left: 0; color: var(--bronze); font-style: normal; }
+
+@media (max-width: 768px) {
+  .writings-grid, .media-grid { grid-template-columns: 1fr; }
+}
+</style>

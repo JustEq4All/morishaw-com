@@ -1,0 +1,218 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<Base
+  title="Contact — Gilberto Morishaw"
+  description="Reach out for speaking inquiries, consulting engagements, or anything else."
+>
+  <Nav slot="nav" />
+
+  <section class="contact-hero">
+    <div class="container">
+      <p class="section-label">Contact</p>
+      <h1>Let's talk</h1>
+      <p class="contact-hero__sub">
+        Whether you're planning an event, navigating a challenge, or just want to be in touch — I read every message.
+      </p>
+    </div>
+  </section>
+
+  <section class="contact-main">
+    <div class="container contact-main__inner">
+
+      <!-- FORMS -->
+      <div class="contact-forms">
+        <div class="form-tabs" role="tablist">
+          <button class="tab-btn active" role="tab" data-tab="speaking" aria-selected="true">Speaking inquiry</button>
+          <button class="tab-btn" role="tab" data-tab="consulting" aria-selected="false">Consulting inquiry</button>
+          <button class="tab-btn" role="tab" data-tab="general" aria-selected="false">General</button>
+        </div>
+
+        <!-- Speaking form -->
+        <form class="contact-form active" id="tab-speaking" name="contact-speaking" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact-speaking" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="s-name">Your name</label>
+              <input type="text" id="s-name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="s-org">Organisation</label>
+              <input type="text" id="s-org" name="organisation" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="s-type">Event type</label>
+              <select id="s-type" name="event-type">
+                <option value="">Select format</option>
+                <option>Keynote</option>
+                <option>Panel</option>
+                <option>Moderation</option>
+                <option>Workshop</option>
+                <option>Faculty/Residency</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="s-date">Event date (approx.)</label>
+              <input type="text" id="s-date" name="event-date" placeholder="e.g. April 2027" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="s-email">Your email</label>
+            <input type="email" id="s-email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="s-message">Tell me about the event</label>
+            <textarea id="s-message" name="message" rows="5" placeholder="Audience, theme, what you're hoping to create..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send speaking inquiry</button>
+        </form>
+
+        <!-- Consulting form -->
+        <form class="contact-form" id="tab-consulting" name="contact-consulting" method="POST" data-netlify="true" style="display:none">
+          <input type="hidden" name="form-name" value="contact-consulting" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-name">Your name</label>
+              <input type="text" id="c-name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="c-org">Organisation</label>
+              <input type="text" id="c-org" name="organisation" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="c-challenge">What are you working on?</label>
+            <textarea id="c-challenge" name="challenge" rows="4" placeholder="The challenge, the goal, the context — as much as you want to share."></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-timeline">Timeline</label>
+              <input type="text" id="c-timeline" name="timeline" placeholder="e.g. Q1 2027, ongoing" />
+            </div>
+            <div class="form-group">
+              <label for="c-email">Your email</label>
+              <input type="email" id="c-email" name="email" required />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Send consulting inquiry</button>
+        </form>
+
+        <!-- General form -->
+        <form class="contact-form" id="tab-general" name="contact-general" method="POST" data-netlify="true" style="display:none">
+          <input type="hidden" name="form-name" value="contact-general" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="g-name">Your name</label>
+              <input type="text" id="g-name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="g-email">Your email</label>
+              <input type="email" id="g-email" name="email" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="g-message">Message</label>
+            <textarea id="g-message" name="message" rows="6"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send message</button>
+        </form>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="contact-sidebar">
+        <div class="contact-direct">
+          <h4>Direct contacts</h4>
+          <a href="mailto:gilberto@morishaw.com">gilberto@morishaw.com</a>
+          <a href="mailto:hallo@studiostoofpot.nl">hallo@studiostoofpot.nl</a>
+          <a href="mailto:hello@crf-foundation.org">hello@crf-foundation.org</a>
+        </div>
+
+        <div class="contact-booking">
+          <h4>Book via Speakers Academy</h4>
+          <a href="https://www.speakersacademy.com/en/speaker/gilberto-morishaw/" target="_blank" rel="noopener" class="btn btn-outline" style="width: 100%; text-align: center; justify-content: center;">Speakers Academy profile ↗</a>
+        </div>
+
+        <div class="contact-social">
+          <h4>Find me online</h4>
+          <div class="contact-social__links">
+            <a href="https://www.instagram.com/bertmangil" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              @bertmangil
+            </a>
+            <a href="https://www.linkedin.com/in/gilberto-morishaw-b92a23108" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 10v7M12 13a3 3 0 0 1 6 0v4"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-response">
+          <p>I read every message and respond within 3 business days — usually sooner.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+.contact-hero { padding: var(--space-xl) 0; background: var(--ink); color: var(--off-white); }
+.contact-hero .section-label { color: var(--bronze-light); }
+.contact-hero h1 { color: var(--off-white); margin: var(--space-sm) 0; }
+.contact-hero__sub { color: rgba(250,247,242,0.75); max-width: 480px; }
+
+.contact-main { padding: var(--space-xl) 0; }
+.contact-main__inner { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-xl); align-items: start; }
+
+.form-tabs { display: flex; gap: 0; margin-bottom: var(--space-md); border-bottom: 1px solid var(--grey-light); }
+.tab-btn { padding: 0.7rem 1.2rem; background: none; border: none; border-bottom: 2px solid transparent; font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; cursor: pointer; color: var(--grey); transition: all var(--transition); margin-bottom: -1px; }
+.tab-btn:hover { color: var(--ink); }
+.tab-btn.active { color: var(--bronze); border-bottom-color: var(--bronze); }
+
+.contact-form { display: flex; flex-direction: column; gap: var(--space-sm); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+.form-group input, .form-group select, .form-group textarea { padding: 0.75rem 1rem; border: 1px solid var(--grey-light); border-radius: var(--radius); font-family: var(--font-body); font-size: 0.95rem; background: var(--off-white); transition: border-color var(--transition); width: 100%; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--bronze); }
+
+.contact-sidebar { display: flex; flex-direction: column; gap: var(--space-md); }
+.contact-direct, .contact-booking, .contact-social { padding: var(--space-md); background: var(--bronze-pale); border-radius: var(--radius-lg); }
+.contact-direct h4, .contact-booking h4, .contact-social h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--bronze); margin-bottom: 0.75rem; font-family: var(--font-body); }
+.contact-direct a { display: block; font-size: 0.88rem; color: var(--ink); margin-bottom: 0.3rem; }
+.contact-direct a:hover { color: var(--bronze); }
+.contact-social__links { display: flex; flex-direction: column; gap: 0.6rem; }
+.contact-social__links a { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--ink); text-decoration: none; }
+.contact-social__links a:hover { color: var(--bronze); }
+.contact-response { font-size: 0.88rem; color: var(--grey); font-style: italic; padding: var(--space-sm) 0; }
+
+@media (max-width: 768px) {
+  .contact-main__inner { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const forms = document.querySelectorAll('.contact-form');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      forms.forEach(f => (f as HTMLElement).style.display = 'none');
+
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      const target = document.getElementById(`tab-${tab.dataset.tab}`);
+      if (target) (target as HTMLElement).style.display = 'flex';
+    });
+  });
+</script>

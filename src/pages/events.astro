@@ -1,0 +1,139 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+import '../styles/global.css';
+
+const allEvents = await getCollection('events');
+
+// Sort: featured first, then by date desc
+const upcoming = allEvents
+  .filter(e => e.data.date >= '2026')
+  .sort((a, b) => b.data.date.localeCompare(a.data.date));
+
+const past = allEvents
+  .filter(e => e.data.date < '2026')
+  .sort((a, b) => b.data.date.localeCompare(a.data.date));
+
+const roleColors: Record<string, string> = {
+  Speaker: 'var(--bronze)',
+  Moderator: 'var(--ink)',
+  Organizer: '#4A7C59',
+  Facilitator: '#6B6B6B',
+  Panelist: 'var(--bronze-light)',
+  Participant: 'var(--grey)',
+};
+---
+
+<Base
+  title="Events — Gilberto Morishaw"
+  description="Upcoming and past speaking engagements, panel appearances, and events featuring Gilberto Morishaw."
+>
+  <Nav slot="nav" />
+
+  <section class="events-hero">
+    <div class="container">
+      <p class="section-label">Events</p>
+      <h1>Where I'll be.<br/>Where I've been.</h1>
+      <p class="events-hero__sub">Speaking, moderating, facilitating, and convening — from Davos to The Hague to San Francisco.</p>
+      <a href="/speaking#book" class="btn btn-primary" style="margin-top: 1.5rem;">Book me for your event</a>
+    </div>
+  </section>
+
+  {upcoming.length > 0 && (
+    <section class="events-upcoming">
+      <div class="container">
+        <p class="section-label reveal">Upcoming</p>
+        <h2 class="reveal">What's next</h2>
+        <div class="divider reveal"></div>
+        <div class="events-grid">
+          {upcoming.map(e => (
+            <div class="event-card event-card--upcoming reveal">
+              <div class="event-card__role" style={`color: ${roleColors[e.data.role] || 'var(--bronze)'}`}>
+                {e.data.role}
+              </div>
+              <h3>{e.data.title}</h3>
+              <div class="event-card__meta">
+                <span class="event-card__date">{e.data.date}</span>
+                <span class="event-card__location">{e.data.location}</span>
+              </div>
+              {e.data.recap && <p class="event-card__recap">{e.data.recap}</p>}
+              {e.data.url && (
+                <a href={e.data.url} target="_blank" rel="noopener" class="event-card__link">Learn more ↗</a>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="events-past">
+    <div class="container">
+      <p class="section-label reveal">Past appearances</p>
+      <h2 class="reveal">Where I've been</h2>
+      <div class="divider reveal"></div>
+      <div class="events-grid">
+        {past.map(e => (
+          <div class="event-card reveal">
+            <div class="event-card__role" style={`color: ${roleColors[e.data.role] || 'var(--grey)'}`}>
+              {e.data.role}
+            </div>
+            <h3>{e.data.title}</h3>
+            <div class="event-card__meta">
+              <span class="event-card__date">{e.data.date}</span>
+              <span class="event-card__location">{e.data.location}</span>
+            </div>
+            {e.data.recap && <p class="event-card__recap">{e.data.recap}</p>}
+            {e.data.url && (
+              <a href={e.data.url} target="_blank" rel="noopener" class="event-card__link">More info ↗</a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="events-cta">
+    <div class="container events-cta__inner reveal">
+      <h3>Planning an event?</h3>
+      <p>I speak, moderate, facilitate, and convene — across climate, governance, finance, and youth leadership.</p>
+      <a href="/speaking" class="btn btn-primary">See speaking topics</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+.events-hero { padding: var(--space-xl) 0; background: var(--ink); color: var(--off-white); }
+.events-hero .section-label { color: var(--bronze-light); }
+.events-hero h1 { color: var(--off-white); margin: var(--space-sm) 0; }
+.events-hero__sub { color: rgba(250,247,242,0.75); max-width: 480px; }
+
+.events-upcoming { padding: var(--space-xl) 0; }
+.events-past { padding: var(--space-xl) 0; background: var(--bronze-pale); }
+
+.events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-top: var(--space-md); }
+
+.event-card { background: var(--off-white); border: 1px solid var(--grey-light); border-radius: var(--radius-lg); padding: var(--space-md); display: flex; flex-direction: column; gap: 0.6rem; transition: border-color var(--transition); }
+.event-card:hover { border-color: var(--bronze); }
+.event-card--upcoming { border-color: var(--bronze-light); }
+.event-card__role { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+.event-card h3 { font-size: 1rem; line-height: 1.3; }
+.event-card__meta { display: flex; flex-direction: column; gap: 0.2rem; }
+.event-card__date { font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+.event-card__location { font-size: 0.82rem; color: var(--grey); }
+.event-card__recap { font-size: 0.85rem; color: var(--grey); max-width: 100%; flex: 1; }
+.event-card__link { font-size: 0.85rem; color: var(--bronze); margin-top: auto; text-decoration: none; }
+.event-card__link:hover { color: var(--ink); }
+
+.events-cta { padding: var(--space-lg) 0; }
+.events-cta__inner h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.events-cta__inner p { color: var(--grey); margin-bottom: var(--space-md); }
+
+@media (max-width: 768px) {
+  .events-grid { grid-template-columns: 1fr; }
+}
+</style>

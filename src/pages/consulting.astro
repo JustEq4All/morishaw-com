@@ -1,0 +1,209 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const services = [
+  {
+    title: "Regenerative Finance & Web3 Strategy",
+    desc: "Practical strategy at the frontier of decentralized finance and community economics. Real track record: Kolektivo (17+ local currency initiatives, CuraDAI stablecoin grants), Bread Cooperative ($500K deployed, $50K+ to public goods), ReFiDAO (DEIJ lead). For organisations exploring DAOs, impact tokens, or cooperative financial infrastructure — not as theory, but as something that gets built and deployed.",
+    tags: ["ReFi", "Web3", "DAOs", "Impact Metrics"],
+    icon: "◈"
+  },
+  {
+    title: "ESG, Impact & Equity",
+    desc: "Governance frameworks and inclusive strategy that goes beyond compliance. CSRD readiness, DEI integration, impact measurement that means something. Understands both the institutional pressure (regulators, investors, boards) and the on-the-ground reality of what actually creates equity — because the distance between the two is usually where organisations get stuck.",
+    tags: ["ESG", "CSRD", "DEI", "Governance"],
+    icon: "◎"
+  },
+  {
+    title: "Policy & Governance Advisory",
+    desc: "Deep expertise in EU institutions, Dutch Caribbean constitutional relations, youth and diaspora policy, and intergenerational governance. Has advised the European Commissioner for International Partnerships directly. Understands the Kingdom of the Netherlands' unique political dynamics, SIDS (Small Island Developing States) in global climate and development negotiations, and how to move policy from report to action.",
+    tags: ["EU Policy", "Kingdom Relations", "SIDS", "Youth Policy"],
+    icon: "◉"
+  },
+  {
+    title: "Systems Facilitation & Convening",
+    desc: "Design and facilitation of strategy retreats, dialogue programmes, co-creation sprints, and multi-stakeholder processes. Not just facilitation — the design of conditions for good decisions. Has co-created programmes with Pakhuis de Zwijger, Springtij, True Price, and Systemic Justice. Brings artistic practice and systems thinking into the same room.",
+    tags: ["Facilitation", "Strategy", "Dialogue Design", "Co-creation"],
+    icon: "◐"
+  },
+];
+
+const process = [
+  { step: "01", title: "Diagnose", desc: "A scoped conversation to understand what you're actually dealing with — not just the presenting problem, but the system it sits in." },
+  { step: "02", title: "Design", desc: "Co-creating the approach together. What needs to change, who needs to be in the room, what the right intervention actually looks like." },
+  { step: "03", title: "Deliver", desc: "Showing up fully — whether that's a strategy sprint, a policy brief, a facilitated retreat, or ongoing advisory. With accountability to outcomes, not just outputs." },
+];
+
+const clients = [
+  "European Commission (DG INTPA)",
+  "Kolektivo",
+  "Bread Cooperative",
+  "ReFiDAO",
+  "Creative Regenerative Futures Foundation",
+  "Pakhuis de Zwijger",
+  "Springtij",
+  "True Price",
+  "Systemic Justice",
+  "Creativo Design",
+  "OCAN",
+  "DRIFT (Erasmus University)",
+  "Impact Economy Foundation",
+  "Oxfam Novib",
+];
+---
+
+<Base
+  title="Consulting — Gilberto Morishaw"
+  description="Systems strategy, regenerative finance, policy advisory, and facilitation for organisations working at the edge of what's changing."
+>
+  <Nav slot="nav" />
+
+  <!-- HERO -->
+  <section class="consulting-hero">
+    <div class="container">
+      <p class="section-label">Consulting</p>
+      <h1>I work with organisations trying<br/><em>to change something real</em></h1>
+      <p class="consulting-hero__sub">
+        Systems strategy, regenerative finance, policy advisory, and facilitation.
+        For organisations that keep getting stuck on the gap between ambition and implementation.
+      </p>
+      <a href="#inquire" class="btn btn-primary">Request a consultation</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="container">
+      <p class="section-label reveal">What I offer</p>
+      <h2 class="reveal">Four service areas</h2>
+      <div class="divider reveal"></div>
+      <div class="services__grid">
+        {services.map(s => (
+          <div class="service-card reveal">
+            <span class="service-card__icon">{s.icon}</span>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+            <div class="service-card__tags">
+              {s.tags.map(t => <span class="tag">{t}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="container">
+      <p class="section-label reveal">How it works</p>
+      <h2 class="reveal">Process</h2>
+      <div class="divider reveal"></div>
+      <div class="process__steps">
+        {process.map(p => (
+          <div class="process__step reveal">
+            <span class="process__num">{p.step}</span>
+            <h4>{p.title}</h4>
+            <p>{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section class="clients">
+    <div class="container">
+      <p class="section-label reveal">Who I've worked with</p>
+      <div class="clients__grid reveal">
+        {clients.map(c => <span class="client-chip">{c}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / INQUIRY -->
+  <section id="inquire" class="inquire">
+    <div class="container">
+      <p class="section-label reveal">Work together</p>
+      <h2 class="reveal">Request a consultation</h2>
+      <div class="divider reveal"></div>
+      <form class="inquiry-form reveal" name="consulting-inquiry" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="consulting-inquiry" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="org">Organisation</label>
+            <input type="text" id="org" name="organisation" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="challenge">What are you working on?</label>
+          <textarea id="challenge" name="challenge" rows="4" placeholder="The challenge, the goal, the context — as much or as little as you want to share."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="timeline">Timeline</label>
+            <input type="text" id="timeline" name="timeline" placeholder="e.g. Q1 2027, ongoing, urgent" />
+          </div>
+          <div class="form-group">
+            <label for="email">Your email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Send request</button>
+      </form>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+.consulting-hero { padding: var(--space-xl) 0; background: var(--ink); color: var(--off-white); }
+.consulting-hero .section-label { color: var(--bronze-light); }
+.consulting-hero h1 { color: var(--off-white); margin: var(--space-sm) 0; }
+.consulting-hero h1 em { color: var(--bronze-light); font-style: italic; }
+.consulting-hero__sub { color: rgba(250,247,242,0.75); max-width: 600px; margin-bottom: var(--space-md); }
+
+.services { padding: var(--space-xl) 0; }
+.services__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-md); }
+.service-card { padding: var(--space-md); border: 1px solid var(--grey-light); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 0.75rem; transition: border-color var(--transition); }
+.service-card:hover { border-color: var(--bronze); }
+.service-card__icon { font-size: 1.5rem; color: var(--bronze); }
+.service-card h3 { font-size: 1.1rem; }
+.service-card p { font-size: 0.9rem; color: var(--grey); max-width: 100%; flex: 1; }
+.service-card__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tag { font-size: 0.75rem; background: var(--bronze-pale); color: var(--bronze); padding: 0.2rem 0.6rem; border-radius: 99px; font-weight: 500; }
+
+.process { background: var(--ink); padding: var(--space-xl) 0; }
+.process .section-label { color: var(--bronze-light); }
+.process h2 { color: var(--off-white); }
+.process .divider { background: var(--bronze); }
+.process__steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-top: var(--space-md); }
+.process__step { color: var(--off-white); }
+.process__num { font-family: var(--font-display); font-size: 3rem; color: var(--bronze); line-height: 1; display: block; margin-bottom: 0.5rem; }
+.process__step h4 { color: var(--off-white); margin-bottom: 0.4rem; font-size: 1.1rem; }
+.process__step p { color: rgba(250,247,242,0.65); font-size: 0.9rem; max-width: 100%; }
+
+.clients { padding: var(--space-lg) 0; background: var(--bronze-pale); }
+.clients__grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: var(--space-md); }
+.client-chip { padding: 0.4rem 0.9rem; background: var(--off-white); border: 1px solid var(--grey-light); border-radius: 99px; font-size: 0.85rem; color: var(--ink); }
+
+.inquire { padding: var(--space-xl) 0; }
+.inquiry-form { max-width: 680px; display: flex; flex-direction: column; gap: var(--space-sm); margin-top: var(--space-md); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+.form-group input, .form-group textarea { padding: 0.75rem 1rem; border: 1px solid var(--grey-light); border-radius: var(--radius); font-family: var(--font-body); font-size: 0.95rem; background: var(--off-white); transition: border-color var(--transition); width: 100%; }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--bronze); }
+
+@media (max-width: 768px) {
+  .services__grid, .process__steps { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>

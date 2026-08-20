@@ -1,0 +1,108 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="footer__name">Gilberto Morishaw</span>
+      <p class="footer__tagline">From the islands to the rooms where the future gets decided.</p>
+    </div>
+
+    <nav class="footer__nav" aria-label="Footer navigation">
+      <a href="/speaking">Speaking</a>
+      <a href="/consulting">Consulting</a>
+      <a href="/work">Work</a>
+      <a href="/writings">Writings</a>
+      <a href="/events">Events</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <div class="footer__social">
+      <a href="https://www.instagram.com/bertmangil" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/gilberto-morishaw-b92a23108" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 10v7M12 13a3 3 0 0 1 6 0v4"/></svg>
+      </a>
+      <a href="https://www.speakersacademy.com/en/speaker/gilberto-morishaw/" target="_blank" rel="noopener" aria-label="Speakers Academy">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container">
+      <span>© {year} Gilberto Morishaw</span>
+      <a href="/privacy">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+.footer {
+  background: var(--ink);
+  color: var(--off-white);
+  padding: var(--space-lg) 0 0;
+}
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--space-lg);
+  align-items: start;
+  padding-bottom: var(--space-lg);
+}
+.footer__name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.footer__tagline {
+  font-size: 0.9rem;
+  color: var(--bronze-light);
+  max-width: 280px;
+}
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.footer__nav a {
+  color: var(--grey-light);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.footer__nav a:hover { color: var(--bronze-light); }
+.footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.footer__social a {
+  color: var(--grey-light);
+  transition: color var(--transition);
+}
+.footer__social a:hover { color: var(--bronze-light); }
+.footer__bottom {
+  border-top: 1px solid #333;
+  padding: var(--space-sm) 0;
+}
+.footer__bottom .container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--grey);
+}
+.footer__bottom a { color: var(--grey); }
+.footer__bottom a:hover { color: var(--bronze-light); }
+
+@media (max-width: 768px) {
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  .footer__social { flex-direction: row; }
+}
+</style>
