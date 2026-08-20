@@ -12,8 +12,10 @@
 - Build: `npm run build` → outputs to `dist/`
 - Deploy command:
   ```bash
-  NETLIFY_AUTH_TOKEN="nfp_aQ…0218" netlify deploy --dir=dist --site="e57afca7-f021-449f-9ed6-a7441aea2a0a" --prod
+  NETLIFY_AUTH_TOKEN="$(cat ~/.openclaw/workspace/.netlify-token)" netlify deploy --dir=dist --site="e57afca7-f021-449f-9ed6-a7441aea2a0a" --prod
+  # Note: if "Project not found", run first: netlify link --site e57afca7-f021-449f-9ed6-a7441aea2a0a
   ```
+- Netlify token is stored at `~/.openclaw/workspace/.netlify-token` (600 perms) — models should read it from there, never ask Gilberto to re-paste.
 - CMS: Decap CMS at `public/admin/config.yml`
 - Design system: `src/styles/global.css` — bronze/off-white/ink palette
 
