@@ -1,0 +1,46 @@
+fragment EventsParts on Events {
+  __typename
+  title
+  date
+  location
+  role
+  url
+  recap
+  featured
+}
+
+fragment WritingsParts on Writings {
+  __typename
+  title
+  outlet
+  year
+  url
+  summary
+  format
+  featured
+}
+
+fragment TalksParts on Talks {
+  __typename
+  title
+  description
+  formats
+  order
+}
+
+fragment TestimonialsParts on Testimonials {
+  __typename
+  quote
+  name
+  role
+  organisation
+  type
+}
+
+fragment SiteParts on Site {
+  __typename
+  hero_line1
+  hero_line2
+  hero_sub
+  tagline
+}
