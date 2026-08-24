@@ -6,6 +6,28 @@
 
 ---
 
+## 📍 CURRENT STATUS — as of 2026-08-24
+
+Where things landed after the TinaCMS rollout. **This is the source of truth for today's state.**
+
+### Done & working
+- ✅ **TinaCMS deployed & working** on `gilberto-morishaw.netlify.app`
+- ✅ Schema + lockfile + generated admin all **committed & pushed** to `origin/master`
+- ✅ `/admin` loads; **domain URL registered** in Tina Cloud (Project → Site URLs)
+- ✅ Netlify env vars set (`TINA_CLIENT_ID`, `TINA_TOKEN`) — used by build
+- ✅ Build flow verified: `tinacms build` → `npm run build` (8 pages) → `netlify deploy --prod`
+
+### ⏳ Next steps (when Gilberto's ready)
+1. **Test an actual edit + publish from `/admin`** (the GitHub-write login path) — confirms end-to-end CMS editing works
+2. **Decide if the public site goes live/public** — right now everything is behind **Netlify SSO login** (the `sso_login` flag). Until that's flipped, the public won't see the site without signing in.
+3. (Doc task) This HANDOFF should be kept updated so future sessions start clean.
+
+### Known flags / decisions in flight
+- **Netlify SSO login** is currently ON (`sso_login`) → public site hidden behind auth. Flip to OFF when ready to publish publicly.
+- **Content token is read-only by design** — publishing edits happens via `/admin` login, not an API token. Never treat the content token as publish auth.
+
+---
+
 ## Architecture (do not change these)
 
 - Framework: **Astro v5**, static output
