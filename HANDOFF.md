@@ -1,5 +1,7 @@
 # morishaw.com — Handoff Guide for Any Model
 
+**➡️ READ THIS ENTIRE FILE BEFORE TOUCHING ANYTHING.** This is the source of truth for the current state of the site and every TinaCMS gotcha. If it looks unfamiliar, read the CURRENT STATUS section (below) plus the **TinaCMS gotchas** section (further down) before running any command. The design spec lives at `/root/.openclaw/workspace/website/MORISHAW_SITE_SPEC_v2.md` — read that too for what the site is supposed to be. Do not guess at the workflow; it is all documented here.
+
 **Repo:** github.com/JustEq4All/morishaw-com
 **Live:** https://gilberto-morishaw.netlify.app
 **Local path:** `~/.openclaw/workspace/website/astro-site/`
