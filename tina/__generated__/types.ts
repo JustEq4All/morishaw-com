@@ -244,6 +244,7 @@ export type Events = Node & Document & {
   role?: Maybe<Scalars['String']['output']>;
   url?: Maybe<Scalars['String']['output']>;
   recap?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
   featured?: Maybe<Scalars['Boolean']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
@@ -251,6 +252,13 @@ export type Events = Node & Document & {
 };
 
 export type StringFilter = {
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ImageFilter = {
   startsWith?: InputMaybe<Scalars['String']['input']>;
   eq?: InputMaybe<Scalars['String']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -269,6 +277,7 @@ export type EventsFilter = {
   role?: InputMaybe<StringFilter>;
   url?: InputMaybe<StringFilter>;
   recap?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
   featured?: InputMaybe<BooleanFilter>;
 };
 
@@ -292,6 +301,7 @@ export type Writings = Node & Document & {
   year?: Maybe<Scalars['Float']['output']>;
   url?: Maybe<Scalars['String']['output']>;
   summary?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
   format?: Maybe<Scalars['String']['output']>;
   featured?: Maybe<Scalars['Boolean']['output']>;
   id: Scalars['ID']['output'];
@@ -315,6 +325,7 @@ export type WritingsFilter = {
   year?: InputMaybe<NumberFilter>;
   url?: InputMaybe<StringFilter>;
   summary?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
   format?: InputMaybe<StringFilter>;
   featured?: InputMaybe<BooleanFilter>;
 };
@@ -336,6 +347,7 @@ export type Talks = Node & Document & {
   __typename?: 'Talks';
   title: Scalars['String']['output'];
   description?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
   formats?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   order?: Maybe<Scalars['Float']['output']>;
   id: Scalars['ID']['output'];
@@ -346,6 +358,7 @@ export type Talks = Node & Document & {
 export type TalksFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
   formats?: InputMaybe<StringFilter>;
   order?: InputMaybe<NumberFilter>;
 };
@@ -402,6 +415,7 @@ export type Site = Node & Document & {
   hero_line2?: Maybe<Scalars['String']['output']>;
   hero_sub?: Maybe<Scalars['String']['output']>;
   tagline?: Maybe<Scalars['String']['output']>;
+  profile_photo?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -412,6 +426,7 @@ export type SiteFilter = {
   hero_line2?: InputMaybe<StringFilter>;
   hero_sub?: InputMaybe<StringFilter>;
   tagline?: InputMaybe<StringFilter>;
+  profile_photo?: InputMaybe<ImageFilter>;
 };
 
 export type SiteConnectionEdges = {
@@ -563,6 +578,7 @@ export type EventsMutation = {
   role?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
   recap?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
   featured?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
@@ -572,6 +588,7 @@ export type WritingsMutation = {
   year?: InputMaybe<Scalars['Float']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
   format?: InputMaybe<Scalars['String']['input']>;
   featured?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -579,6 +596,7 @@ export type WritingsMutation = {
 export type TalksMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
   formats?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   order?: InputMaybe<Scalars['Float']['input']>;
 };
@@ -596,9 +614,17 @@ export type SiteMutation = {
   hero_line2?: InputMaybe<Scalars['String']['input']>;
   hero_sub?: InputMaybe<Scalars['String']['input']>;
   tagline?: InputMaybe<Scalars['String']['input']>;
+  profile_photo?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type StringFilter = {
+  startsWith?: string | null | undefined;
+  eq?: string | null | undefined;
+  exists?: boolean | null | undefined;
+  in?: Array<string | null | undefined> | null | undefined;
+};
+
+export type ImageFilter = {
   startsWith?: string | null | undefined;
   eq?: string | null | undefined;
   exists?: boolean | null | undefined;
@@ -617,6 +643,7 @@ export type EventsFilter = {
   role?: StringFilter | null | undefined;
   url?: StringFilter | null | undefined;
   recap?: StringFilter | null | undefined;
+  image?: ImageFilter | null | undefined;
   featured?: BooleanFilter | null | undefined;
 };
 
@@ -636,6 +663,7 @@ export type WritingsFilter = {
   year?: NumberFilter | null | undefined;
   url?: StringFilter | null | undefined;
   summary?: StringFilter | null | undefined;
+  image?: ImageFilter | null | undefined;
   format?: StringFilter | null | undefined;
   featured?: BooleanFilter | null | undefined;
 };
@@ -643,6 +671,7 @@ export type WritingsFilter = {
 export type TalksFilter = {
   title?: StringFilter | null | undefined;
   description?: StringFilter | null | undefined;
+  image?: ImageFilter | null | undefined;
   formats?: StringFilter | null | undefined;
   order?: NumberFilter | null | undefined;
 };
@@ -660,24 +689,25 @@ export type SiteFilter = {
   hero_line2?: StringFilter | null | undefined;
   hero_sub?: StringFilter | null | undefined;
   tagline?: StringFilter | null | undefined;
+  profile_photo?: ImageFilter | null | undefined;
 };
 
-export type EventsPartsFragment = { __typename: 'Events', title: string, date: string | null, location: string | null, role: string | null, url: string | null, recap: string | null, featured: boolean | null };
+export type EventsPartsFragment = { __typename: 'Events', title: string, date: string | null, location: string | null, role: string | null, url: string | null, recap: string | null, image: string | null, featured: boolean | null };
 
-export type WritingsPartsFragment = { __typename: 'Writings', title: string, outlet: string | null, year: number | null, url: string | null, summary: string | null, format: string | null, featured: boolean | null };
+export type WritingsPartsFragment = { __typename: 'Writings', title: string, outlet: string | null, year: number | null, url: string | null, summary: string | null, image: string | null, format: string | null, featured: boolean | null };
 
-export type TalksPartsFragment = { __typename: 'Talks', title: string, description: string | null, formats: Array<string | null> | null, order: number | null };
+export type TalksPartsFragment = { __typename: 'Talks', title: string, description: string | null, image: string | null, formats: Array<string | null> | null, order: number | null };
 
 export type TestimonialsPartsFragment = { __typename: 'Testimonials', quote: string | null, name: string, role: string | null, organisation: string | null, type: string | null };
 
-export type SitePartsFragment = { __typename: 'Site', hero_line1: string | null, hero_line2: string | null, hero_sub: string | null, tagline: string | null };
+export type SitePartsFragment = { __typename: 'Site', hero_line1: string | null, hero_line2: string | null, hero_sub: string | null, tagline: string | null, profile_photo: string | null };
 
 export type EventsQueryVariables = Exact<{
   relativePath: string;
 }>;
 
 
-export type EventsQuery = { events: { __typename: 'Events', id: string, title: string, date: string | null, location: string | null, role: string | null, url: string | null, recap: string | null, featured: boolean | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type EventsQuery = { events: { __typename: 'Events', id: string, title: string, date: string | null, location: string | null, role: string | null, url: string | null, recap: string | null, image: string | null, featured: boolean | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type EventsConnectionQueryVariables = Exact<{
   before?: string | null | undefined;
@@ -689,14 +719,14 @@ export type EventsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type EventsConnectionQuery = { eventsConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Events', id: string, title: string, date: string | null, location: string | null, role: string | null, url: string | null, recap: string | null, featured: boolean | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type EventsConnectionQuery = { eventsConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Events', id: string, title: string, date: string | null, location: string | null, role: string | null, url: string | null, recap: string | null, image: string | null, featured: boolean | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type WritingsQueryVariables = Exact<{
   relativePath: string;
 }>;
 
 
-export type WritingsQuery = { writings: { __typename: 'Writings', id: string, title: string, outlet: string | null, year: number | null, url: string | null, summary: string | null, format: string | null, featured: boolean | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type WritingsQuery = { writings: { __typename: 'Writings', id: string, title: string, outlet: string | null, year: number | null, url: string | null, summary: string | null, image: string | null, format: string | null, featured: boolean | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type WritingsConnectionQueryVariables = Exact<{
   before?: string | null | undefined;
@@ -708,14 +738,14 @@ export type WritingsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type WritingsConnectionQuery = { writingsConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Writings', id: string, title: string, outlet: string | null, year: number | null, url: string | null, summary: string | null, format: string | null, featured: boolean | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type WritingsConnectionQuery = { writingsConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Writings', id: string, title: string, outlet: string | null, year: number | null, url: string | null, summary: string | null, image: string | null, format: string | null, featured: boolean | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type TalksQueryVariables = Exact<{
   relativePath: string;
 }>;
 
 
-export type TalksQuery = { talks: { __typename: 'Talks', id: string, title: string, description: string | null, formats: Array<string | null> | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type TalksQuery = { talks: { __typename: 'Talks', id: string, title: string, description: string | null, image: string | null, formats: Array<string | null> | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type TalksConnectionQueryVariables = Exact<{
   before?: string | null | undefined;
@@ -727,7 +757,7 @@ export type TalksConnectionQueryVariables = Exact<{
 }>;
 
 
-export type TalksConnectionQuery = { talksConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Talks', id: string, title: string, description: string | null, formats: Array<string | null> | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type TalksConnectionQuery = { talksConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Talks', id: string, title: string, description: string | null, image: string | null, formats: Array<string | null> | null, order: number | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type TestimonialsQueryVariables = Exact<{
   relativePath: string;
@@ -753,7 +783,7 @@ export type SiteQueryVariables = Exact<{
 }>;
 
 
-export type SiteQuery = { site: { __typename: 'Site', id: string, hero_line1: string | null, hero_line2: string | null, hero_sub: string | null, tagline: string | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type SiteQuery = { site: { __typename: 'Site', id: string, hero_line1: string | null, hero_line2: string | null, hero_sub: string | null, tagline: string | null, profile_photo: string | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type SiteConnectionQueryVariables = Exact<{
   before?: string | null | undefined;
@@ -765,7 +795,7 @@ export type SiteConnectionQueryVariables = Exact<{
 }>;
 
 
-export type SiteConnectionQuery = { siteConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Site', id: string, hero_line1: string | null, hero_line2: string | null, hero_sub: string | null, tagline: string | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type SiteConnectionQuery = { siteConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Site', id: string, hero_line1: string | null, hero_line2: string | null, hero_sub: string | null, tagline: string | null, profile_photo: string | null, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const EventsPartsFragmentDoc = gql`
     fragment EventsParts on Events {
@@ -776,6 +806,7 @@ export const EventsPartsFragmentDoc = gql`
   role
   url
   recap
+  image
   featured
 }
     `;
@@ -787,6 +818,7 @@ export const WritingsPartsFragmentDoc = gql`
   year
   url
   summary
+  image
   format
   featured
 }
@@ -796,6 +828,7 @@ export const TalksPartsFragmentDoc = gql`
   __typename
   title
   description
+  image
   formats
   order
 }
@@ -817,6 +850,7 @@ export const SitePartsFragmentDoc = gql`
   hero_line2
   hero_sub
   tagline
+  profile_photo
 }
     `;
 export const EventsDocument = gql`

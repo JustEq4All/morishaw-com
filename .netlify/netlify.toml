@@ -1,5 +1,5 @@
+headersOrigin = "config"
 plugins = []
-headers = []
 redirects = []
 
 [functions]
@@ -8,9 +8,9 @@ redirects = []
 
 [build]
 publish = "/root/.openclaw/workspace/website/astro-site/dist"
-publishOrigin = "ui"
-commandOrigin = "ui"
-command = "npm run build"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "npx tinacms build && npm run build"
 
 [build.environment]
 
@@ -25,3 +25,9 @@ command = "npm run build"
 [build.processing.js]
 
 [build.services]
+
+[[headers]]
+for = "/admin/*"
+
+[headers.values]
+Content-Security-Policy = "frame-ancestors 'self' https://app.tina.io"

@@ -14,6 +14,7 @@ export const EventsPartsFragmentDoc = gql`
   role
   url
   recap
+  image
   featured
 }
     `;
@@ -25,6 +26,7 @@ export const WritingsPartsFragmentDoc = gql`
   year
   url
   summary
+  image
   format
   featured
 }
@@ -34,6 +36,7 @@ export const TalksPartsFragmentDoc = gql`
   __typename
   title
   description
+  image
   formats
   order
 }
@@ -55,6 +58,7 @@ export const SitePartsFragmentDoc = gql`
   hero_line2
   hero_sub
   tagline
+  profile_photo
 }
     `;
 export const EventsDocument = gql`

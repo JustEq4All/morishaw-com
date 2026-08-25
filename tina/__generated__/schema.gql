@@ -106,6 +106,7 @@ type Events implements Node & Document {
   role: String
   url: String
   recap: String
+  image: String
   featured: Boolean
   id: ID!
   _sys: SystemInfo!
@@ -113,6 +114,13 @@ type Events implements Node & Document {
 }
 
 input StringFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input ImageFilter {
   startsWith: String
   eq: String
   exists: Boolean
@@ -131,6 +139,7 @@ input EventsFilter {
   role: StringFilter
   url: StringFilter
   recap: StringFilter
+  image: ImageFilter
   featured: BooleanFilter
 }
 
@@ -151,6 +160,7 @@ type Writings implements Node & Document {
   year: Float
   url: String
   summary: String
+  image: String
   format: String
   featured: Boolean
   id: ID!
@@ -174,6 +184,7 @@ input WritingsFilter {
   year: NumberFilter
   url: StringFilter
   summary: StringFilter
+  image: ImageFilter
   format: StringFilter
   featured: BooleanFilter
 }
@@ -192,6 +203,7 @@ type WritingsConnection implements Connection {
 type Talks implements Node & Document {
   title: String!
   description: String
+  image: String
   formats: [String]
   order: Float
   id: ID!
@@ -202,6 +214,7 @@ type Talks implements Node & Document {
 input TalksFilter {
   title: StringFilter
   description: StringFilter
+  image: ImageFilter
   formats: StringFilter
   order: NumberFilter
 }
@@ -252,6 +265,7 @@ type Site implements Node & Document {
   hero_line2: String
   hero_sub: String
   tagline: String
+  profile_photo: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -262,6 +276,7 @@ input SiteFilter {
   hero_line2: StringFilter
   hero_sub: StringFilter
   tagline: StringFilter
+  profile_photo: ImageFilter
 }
 
 type SiteConnectionEdges {
@@ -317,6 +332,7 @@ input EventsMutation {
   role: String
   url: String
   recap: String
+  image: String
   featured: Boolean
 }
 
@@ -326,6 +342,7 @@ input WritingsMutation {
   year: Float
   url: String
   summary: String
+  image: String
   format: String
   featured: Boolean
 }
@@ -333,6 +350,7 @@ input WritingsMutation {
 input TalksMutation {
   title: String
   description: String
+  image: String
   formats: [String]
   order: Float
 }
@@ -350,6 +368,7 @@ input SiteMutation {
   hero_line2: String
   hero_sub: String
   tagline: String
+  profile_photo: String
 }
 
 schema {

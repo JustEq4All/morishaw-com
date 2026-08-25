@@ -6,6 +6,7 @@ fragment EventsParts on Events {
   role
   url
   recap
+  image
   featured
 }
 
@@ -16,6 +17,7 @@ fragment WritingsParts on Writings {
   year
   url
   summary
+  image
   format
   featured
 }
@@ -24,6 +26,7 @@ fragment TalksParts on Talks {
   __typename
   title
   description
+  image
   formats
   order
 }
@@ -43,4 +46,5 @@ fragment SiteParts on Site {
   hero_line2
   hero_sub
   tagline
+  profile_photo
 }
