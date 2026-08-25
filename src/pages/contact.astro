@@ -2,7 +2,11 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
 import '../styles/global.css';
+
+const [contact] = await getCollection('site', ({ data }) => data.email !== undefined);
+const c = contact?.data ?? {};
 ---
 
 <Base
@@ -129,24 +133,24 @@ import '../styles/global.css';
       <aside class="contact-sidebar">
         <div class="contact-direct">
           <h4>Direct contacts</h4>
-          <a href="mailto:gilberto@morishaw.com">gilberto@morishaw.com</a>
-          <a href="mailto:hallo@studiostoofpot.nl">hallo@studiostoofpot.nl</a>
-          <a href="mailto:hello@crf-foundation.org">hello@crf-foundation.org</a>
+          <a href={`mailto:${c.email || 'gilberto@morishaw.com'}`}>{c.email || 'gilberto@morishaw.com'}</a>
+          <a href={`mailto:${c.email_studio || 'hallo@studiostoofpot.nl'}`}>{c.email_studio || 'hallo@studiostoofpot.nl'}</a>
+          <a href={`mailto:${c.email_crf || 'hello@crf-foundation.org'}`}>{c.email_crf || 'hello@crf-foundation.org'}</a>
         </div>
 
         <div class="contact-booking">
           <h4>Book via Speakers Academy</h4>
-          <a href="https://www.speakersacademy.com/en/speaker/gilberto-morishaw/" target="_blank" rel="noopener" class="btn btn-outline" style="width: 100%; text-align: center; justify-content: center;">Speakers Academy profile ↗</a>
+          <a href={c.speakers_academy || 'https://www.speakersacademy.com/en/speaker/gilberto-morishaw/'} target="_blank" rel="noopener" class="btn btn-outline" style="width: 100%; text-align: center; justify-content: center;">Speakers Academy profile ↗</a>
         </div>
 
         <div class="contact-social">
           <h4>Find me online</h4>
           <div class="contact-social__links">
-            <a href="https://www.instagram.com/bertmangil" target="_blank" rel="noopener">
+            <a href={`https://www.instagram.com/${c.instagram || 'bertmangil'}`} target="_blank" rel="noopener">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              @bertmangil
+              @{c.instagram || 'bertmangil'}
             </a>
-            <a href="https://www.linkedin.com/in/gilberto-morishaw-b92a23108" target="_blank" rel="noopener">
+            <a href={c.linkedin || 'https://www.linkedin.com/in/gilberto-morishaw-b92a23108'} target="_blank" rel="noopener">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 10v7M12 13a3 3 0 0 1 6 0v4"/></svg>
               LinkedIn
             </a>

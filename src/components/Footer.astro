@@ -1,11 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
 const year = new Date().getFullYear();
+const [home] = await getCollection('site', ({ data }) => data.tagline !== undefined);
+const tagline = home?.data?.tagline ?? 'From the islands to the rooms where the future gets decided.';
 ---
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__brand">
       <span class="footer__name">Gilberto Morishaw</span>
-      <p class="footer__tagline">From the islands to the rooms where the future gets decided.</p>
+      <p class="footer__tagline">{tagline}</p>
     </div>
 
     <nav class="footer__nav" aria-label="Footer navigation">

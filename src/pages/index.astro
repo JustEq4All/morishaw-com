@@ -2,7 +2,11 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
 import '../styles/global.css';
+
+const [home] = await getCollection('site', ({ data }) => data.hero_line1 !== undefined);
+const homeData = home?.data ?? {};
 
 const credentials = [
   { label: "Davos 2025 + 2026", sub: "World Economic Forum", url: "https://www.weforum.org/" },
@@ -64,12 +68,11 @@ const selectedWork = [
       <div class="hero__text">
         <p class="section-label">Speaker · Consultant · Convenor</p>
         <h1 class="hero__headline">
-          From the islands to the rooms where<br/>
-          <em>the future gets decided</em>
+          {homeData.hero_line1 || 'From the islands to the rooms where'}<br/>
+          <em>{homeData.hero_line2 || 'the future gets decided'}</em>
         </h1>
         <p class="hero__sub">
-          Dutch Caribbean systems thinker, convenor, and speaker.
-          Based in The Hague. Operating globally.
+          {homeData.hero_sub || 'Dutch Caribbean systems thinker, convenor, and speaker. Based in The Hague. Operating globally.'}
         </p>
         <div class="hero__ctas">
           <a href="/speaking" class="btn btn-primary">Book me to speak</a>

@@ -2,7 +2,11 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
 import '../styles/global.css';
+
+const [about] = await getCollection('site', ({ data }) => data.short_bio !== undefined);
+const aboutData = about?.data ?? {};
 
 const roles = [
   { title: "Co-Director", org: "Creative Regenerative Futures Foundation", url: "https://crf-foundation.org/" },
@@ -42,8 +46,7 @@ const education = [
       <p class="section-label">About</p>
       <h1>Where I come from<br/><em>shapes where I go</em></h1>
       <p class="about-hero__sub">
-        Techno-futurist, systems thinker, speaker, musician, and poet.
-        Born in Curaçao. Based in The Hague. Operating globally.
+        {aboutData.short_bio || 'Techno-futurist, systems thinker, speaker, musician, and poet. Born in Curaçao. Based in The Hague. Operating globally.'}
       </p>
     </div>
   </section>

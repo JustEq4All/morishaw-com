@@ -48,4 +48,25 @@ const testimonials = defineCollection({
   }),
 });
 
-export const collections = { events, writings, talks, testimonials };
+const site = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/site" }),
+  schema: z.object({
+    hero_line1: z.string().optional(),
+    hero_line2: z.string().optional(),
+    hero_sub: z.string().optional(),
+    tagline: z.string().optional(),
+    short_bio: z.string().optional(),
+    origin: z.string().optional(),
+    thread: z.string().optional(),
+    photo: z.string().optional(),
+    email: z.string().optional(),
+    email_studio: z.string().optional(),
+    email_crf: z.string().optional(),
+    calendly_url: z.string().optional(),
+    instagram: z.string().optional(),
+    linkedin: z.string().optional(),
+    speakers_academy: z.string().optional(),
+  }),
+});
+
+export const collections = { events, writings, talks, testimonials, site };
