@@ -10,6 +10,7 @@ const events = defineCollection({
     role: z.enum(['Speaker','Moderator','Organizer','Facilitator','Panelist','Participant']),
     url: z.string().url().optional(),
     recap: z.string().optional(),
+    image: z.string().optional(),
     featured: z.boolean().default(false),
   }),
 });
@@ -22,6 +23,7 @@ const writings = defineCollection({
     year: z.number(),
     url: z.string().url(),
     summary: z.string().optional(),
+    image: z.string().optional(),
     format: z.enum(['Op-ed','Essay','Report','Policy','Interview']),
     featured: z.boolean().default(false),
   }),
@@ -32,6 +34,7 @@ const talks = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    image: z.string().optional(),
     formats: z.array(z.string()),
     order: z.number().default(99),
   }),
@@ -55,6 +58,7 @@ const site = defineCollection({
     hero_line2: z.string().optional(),
     hero_sub: z.string().optional(),
     tagline: z.string().optional(),
+    profile_photo: z.string().optional(),
     short_bio: z.string().optional(),
     origin: z.string().optional(),
     thread: z.string().optional(),

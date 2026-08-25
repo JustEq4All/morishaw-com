@@ -65,6 +65,7 @@ const formats = [
       <div class="talks__grid">
         {talks.map(talk => (
           <div class="talk-card reveal">
+            {talk.data.image && <img src={talk.data.image} alt={talk.data.title} class="talk-card__image" loading="lazy" />}
             <h3>{talk.data.title}</h3>
             <p>{talk.data.description}</p>
             <div class="talk-card__formats">
@@ -243,7 +244,8 @@ const formats = [
 
 .talks { padding: var(--space-xl) 0; }
 .talks__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-md); }
-.talk-card { padding: var(--space-md); border: 1px solid var(--grey-light); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 1rem; transition: border-color var(--transition); }
+.talk-card { padding: var(--space-md); border: 1px solid var(--grey-light); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 1rem; transition: border-color var(--transition); overflow: hidden; }
+.talk-card__image { width: calc(100% + 2 * var(--space-md)); margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) 0; aspect-ratio: 16/9; object-fit: cover; }
 .talk-card:hover { border-color: var(--bronze); }
 .talk-card h3 { font-size: 1.15rem; }
 .talk-card p { font-size: 0.9rem; color: var(--grey); max-width: 100%; flex: 1; }

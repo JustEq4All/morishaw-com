@@ -68,6 +68,7 @@ const media = [
       <div class="writings-grid">
         {writings.map(w => (
           <a href={w.data.url} target="_blank" rel="noopener" class="writing-card reveal">
+            {w.data.image && <img src={w.data.image} alt={w.data.title} class="writing-card__image" loading="lazy" />}
             <div class="writing-card__top">
               <span class="writing-card__format">{w.data.format}</span>
               <span class="writing-card__year">{w.data.year}</span>
@@ -135,7 +136,8 @@ const media = [
 
 .writings-list { padding: var(--space-xl) 0; }
 .writings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-md); }
-.writing-card { border: 1px solid var(--grey-light); border-radius: var(--radius-lg); padding: var(--space-md); text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 0.75rem; transition: all var(--transition); }
+.writing-card { border: 1px solid var(--grey-light); border-radius: var(--radius-lg); padding: var(--space-md); text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 0.75rem; transition: all var(--transition); overflow: hidden; }
+.writing-card__image { width: calc(100% + 2 * var(--space-md)); margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) 0; aspect-ratio: 16/9; object-fit: cover; }
 .writing-card:hover { border-color: var(--bronze); box-shadow: 0 4px 24px rgba(164,117,81,0.08); }
 .writing-card__top { display: flex; justify-content: space-between; align-items: center; }
 .writing-card__format { font-size: 0.75rem; background: var(--bronze-pale); color: var(--bronze); padding: 0.2rem 0.6rem; border-radius: 99px; font-weight: 500; }

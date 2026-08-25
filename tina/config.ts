@@ -34,6 +34,7 @@ export default defineConfig({
           },
           { type: "string", name: "url", label: "Event URL" },
           { type: "string", name: "recap", label: "Recap / notes", ui: { component: "textarea" } },
+          { type: "image", name: "image", label: "Event image (optional)" },
           { type: "boolean", name: "featured", label: "Feature on homepage?" },
         ],
       },
@@ -49,6 +50,7 @@ export default defineConfig({
           { type: "number", name: "year", label: "Year" },
           { type: "string", name: "url", label: "URL" },
           { type: "string", name: "summary", label: "Summary", ui: { component: "textarea" } },
+          { type: "image", name: "image", label: "Writing image (optional)" },
           {
             type: "string",
             name: "format",
@@ -67,6 +69,7 @@ export default defineConfig({
         fields: [
           { type: "string", name: "title", label: "Title", isTitle: true, required: true },
           { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
+          { type: "image", name: "image", label: "Talk image (optional)" },
           {
             type: "string",
             name: "formats",
@@ -107,6 +110,7 @@ export default defineConfig({
           { type: "string", name: "hero_line2", label: "Hero headline (line 2 — italic)" },
           { type: "string", name: "hero_sub", label: "Hero subline", ui: { component: "textarea" } },
           { type: "string", name: "tagline", label: "Positioning tagline (footer)" },
+          { type: "image", name: "profile_photo", label: "Profile photo (hero portrait)" },
         ],
       },
     ],

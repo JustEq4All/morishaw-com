@@ -80,10 +80,13 @@ const selectedWork = [
         </div>
       </div>
       <div class="hero__image">
-        <!-- Replace with real portrait -->
-        <div class="hero__photo-placeholder" aria-hidden="true">
-          <span>Photo coming</span>
-        </div>
+        {homeData.profile_photo ? (
+          <img src={homeData.profile_photo} alt="Gilberto Morishaw" class="hero__photo" />
+        ) : (
+          <div class="hero__photo-placeholder" aria-hidden="true">
+            <span>Photo coming</span>
+          </div>
+        )}
       </div>
     </div>
   </section>
@@ -188,6 +191,13 @@ const selectedWork = [
   justify-content: center;
   color: var(--grey);
   font-size: 0.9rem;
+}
+.hero__photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
 }
 
 /* Two-path */
