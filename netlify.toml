@@ -1,0 +1,13 @@
+[build]
+  # Repo root IS the Astro project (morishaw-com = website/astro-site).
+  command = "npx tinacms build && npm run build"
+  publish = "dist"
+
+[build.environment]
+  # TINA_CLIENT_ID and TINA_TOKEN are set in Netlify site env vars.
+  # tinacms build needs them to generate the admin + lockfile.
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Content-Security-Policy = "frame-ancestors 'self' https://app.tina.io"
