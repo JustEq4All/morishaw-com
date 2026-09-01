@@ -44,20 +44,62 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  <!-- JSON-LD: Person -->
+  <!-- JSON-LD: Person (Knowledge Panel optimized) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Gilberto Morishaw",
+    "alternateName": ["Gilberto Anthony Morishaw", "Gilbert Morishaw"],
     "url": "https://morishaw.com",
+    "image": "https://morishaw.com/images/gilberto-morishaw.png",
     "sameAs": [
+      "https://www.wikidata.org/wiki/Q141249578",
+      "https://www.linkedin.com/in/gilbertomorishaw",
+      "https://www.weforum.org/stories/authors/gilberto-morishaw",
+      "https://www.speakersacademy.com/nl/spreker/gilberto-morishaw/",
       "https://www.instagram.com/bertmangil",
-      "https://www.linkedin.com/in/gilberto-morishaw-b92a23108",
-      "https://www.speakersacademy.com/en/speaker/gilberto-morishaw/"
+      "https://github.com/gilbertomorishaw",
+      "https://www.youtube.com/@gilbertomorishaw"
     ],
-    "jobTitle": "Speaker, Systems Consultant, Convenor",
-    "description": "Dutch Caribbean systems transformation consultant, speaker, and convenor. Based in The Hague."
+    "jobTitle": "Policy Advisor and Innovator",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Creative Regenerative Futures Foundation",
+      "url": "https://morishaw.com"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Leiden University",
+      "sameAs": "https://www.wikidata.org/wiki/Q156598"
+    },
+    "birthPlace": {
+      "@type": "Place",
+      "name": "Curaçao"
+    },
+    "nationality": {
+      "@type": "Country",
+      "name": "Kingdom of the Netherlands"
+    },
+    "award": [
+      "Worldwide Innovation Prize, Global Shapers Community, World Economic Forum",
+      "Davos50 Fellow, World Economic Forum",
+      "Humanity in Action Fellowship"
+    ],
+    "knowsAbout": [
+      "Sustainability",
+      "Climate justice",
+      "Regenerative economies",
+      "Social impact",
+      "Governance",
+      "Technology for good",
+      "Artificial intelligence",
+      "Migration",
+      "Web3",
+      "Youth engagement",
+      "Systems thinking"
+    ],
+    "description": "Dutch Caribbean systems transformation consultant, speaker, and convenor working at the intersection of sustainability, society, and technology. Based in The Hague."
   }
   </script>
 </head>
